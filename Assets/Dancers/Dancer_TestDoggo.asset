@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d662ac4f4e7d949be91432cba5dd1e, type: 3}
+  m_Name: Dancer_TestDoggo
+  m_EditorClassIdentifier: 
+  Name: Test Doggo
+  Description: 'This boye is a very good one, namely, a shiba inu. Those are
+
+    the
+    best kinds of dogs!'
+  DialogAvatar: {fileID: 21300000, guid: d255e1ae226515045b7d47200ec4176e, type: 3}
+  FramesUp:
+  - {fileID: 3253993009917257747, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -3084027318637855739, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -7525261407641210086, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  FramesLeft:
+  - {fileID: 8257947148281284978, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: 440460308744250209, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -2047720952235652253, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  FramesRight:
+  - {fileID: -4629823767794476061, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -8654165964308408448, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -5967473928666070346, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  FramesDown:
+  - {fileID: -2991261387643853054, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: 2081364585141956707, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -6020256360063360960, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -941226364240893926, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -1092257272181081426, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  FramesIdle:
+  - {fileID: -7610033148260118052, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: -7411081210458038955, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: 5977759552167465597, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  - {fileID: 7061811440995916192, guid: 588f4b93796d5e241993325b436f1667, type: 3}
