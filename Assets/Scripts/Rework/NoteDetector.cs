@@ -11,6 +11,7 @@ namespace BerryBeats.Rework
         #region Private Variables
         [Header("Components")]
         [SerializeField] GameManager2 manager;   //TODO: Replace with Singleton call
+        [SerializeField] LevelLoader levelLoader;
         private SpriteRenderer spriteRenderer;
 
         [Header("Properties")]
@@ -43,10 +44,9 @@ namespace BerryBeats.Rework
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Note") && focusedNote.gameObject == other.gameObject)
+            if (other.CompareTag("Note") && focusedNote != null)
             {
                 focusedNote = null;
-                manager.NoteMissed();
             }
         }
         #endregion
@@ -58,12 +58,11 @@ namespace BerryBeats.Rework
             {
                 if (focusedNote != null)
                 {
-                    focusedNote.Hit();
-                    manager.NoteHit();
+                    NoteHit(focusedNote);
                 }
                 else
                 {
-                    manager.NoteMissed();
+                    EarlyMiss();
                 }
 
                 spriteRenderer.sprite = pressedImage;
@@ -72,6 +71,17 @@ namespace BerryBeats.Rework
             {
                 spriteRenderer.sprite = defaultImage;
             }
+        }
+
+        private void NoteHit(Note note)
+        {
+            manager.NoteHit();
+            levelLoader.DestroyNote(note.gameObject);
+        }
+
+        private void EarlyMiss()
+        {
+            manager.NoteMissed();
         }
         #endregion
     }
