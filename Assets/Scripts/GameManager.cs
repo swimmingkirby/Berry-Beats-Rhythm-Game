@@ -120,12 +120,15 @@ namespace BerryBeats {
             {
                 case HitTypes.Regular:
                     currentScore += scorePerNote * currentMultiplier;
+                    normalHits += 1;
                     break;
                 case HitTypes.Good:
                     currentScore += scorePerGoodNote * currentMultiplier;
+                    goodHits += 1;
                     break;
                 case HitTypes.Perfect:
                     currentScore += scorePerPerfectNote * currentMultiplier;
+                    perfectHits += 1;
                     break;
             }
 
