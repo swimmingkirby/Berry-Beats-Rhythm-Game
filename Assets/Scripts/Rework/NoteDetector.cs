@@ -10,7 +10,6 @@ namespace BerryBeats.Rework
         //! Variables
         #region Private Variables
         [Header("Components")]
-        [SerializeField] GameManager2 manager;   //TODO: Replace with Singleton call
         [SerializeField] LevelLoader levelLoader;
         private SpriteRenderer spriteRenderer;
 
@@ -75,13 +74,13 @@ namespace BerryBeats.Rework
 
         private void NoteHit(Note note)
         {
-            manager.NoteHit();
+            GameManager2.Instance.NoteHit();
             levelLoader.DestroyNote(note.gameObject);
         }
 
         private void EarlyMiss()
         {
-            manager.NoteMissed();
+            GameManager2.Instance.NoteMissed();
         }
         #endregion
     }

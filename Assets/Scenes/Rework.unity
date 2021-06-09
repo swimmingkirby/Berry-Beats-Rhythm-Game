@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc7d8be9398dd0499ce1828840a5e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1663626860}
   levelLoader: {fileID: 965856000}
   defaultImage: {fileID: 7762582236204482122, guid: da9b821d621eafd4582b422102726e07, type: 3}
   pressedImage: {fileID: -1033766676993296678, guid: da9b821d621eafd4582b422102726e07, type: 3}
@@ -550,7 +549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc7d8be9398dd0499ce1828840a5e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1663626860}
   levelLoader: {fileID: 965856000}
   defaultImage: {fileID: 8725979607429122002, guid: da9b821d621eafd4582b422102726e07, type: 3}
   pressedImage: {fileID: 3318904089994504119, guid: da9b821d621eafd4582b422102726e07, type: 3}
@@ -779,7 +777,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc7d8be9398dd0499ce1828840a5e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1663626860}
   levelLoader: {fileID: 965856000}
   defaultImage: {fileID: -4660600526088031369, guid: da9b821d621eafd4582b422102726e07, type: 3}
   pressedImage: {fileID: 2319643638384702094, guid: da9b821d621eafd4582b422102726e07, type: 3}
@@ -1555,7 +1552,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 965856000}
-  manager: {fileID: 1663626860}
 --- !u!50 &878348235
 Rigidbody2D:
   serializedVersion: 4
@@ -2330,7 +2326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663626857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 149bc36cba7d42b42be445d54ca85e9c, type: 3}
   m_Name: 
@@ -2384,6 +2380,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5520e30c03535448afb692d5abd7b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 515992357}
+  resultScreen: {fileID: 766832845}
+  beatScroller: {fileID: 965855998}
 --- !u!1 &1665987925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2806,7 +2805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc7d8be9398dd0499ce1828840a5e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1663626860}
   levelLoader: {fileID: 965856000}
   defaultImage: {fileID: -7389299311667654144, guid: da9b821d621eafd4582b422102726e07, type: 3}
   pressedImage: {fileID: 5287939958834139383, guid: da9b821d621eafd4582b422102726e07, type: 3}

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Activator
   - Note
+  - ComposerNote
   layers:
   - Default
   - TransparentFX

@@ -7,13 +7,12 @@ namespace BerryBeats.Rework
     {
         [Header("Components")]
         [SerializeField]private LevelLoader levelLoader;
-        [SerializeField]private GameManager2 manager;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Note"))
             {
-                manager.NoteMissed();
+                GameManager2.Instance.NoteMissed();
                 levelLoader.DestroyNote(other.gameObject);
             }            
         }
