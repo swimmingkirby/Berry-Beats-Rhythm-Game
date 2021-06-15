@@ -1,4 +1,6 @@
 using UnityEngine;
+using BerryBeats.Rework;
+using System.Collections.Generic;
 
 namespace BerryBeats.Composer
 {
@@ -8,12 +10,28 @@ namespace BerryBeats.Composer
         [Header("Component")]
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private Transform noteHolder;
+        [SerializeField] private Level levelLayout;
 
         //! Cache
         private RaycastHit2D hit;
-        private Transform selectedArrow;
+        private Note selectedArrow;
+        private int selectedIndex;
+        private List<Note> notes;
 
-        private const string tagname = "ComposerNote";
+        private const string tagname = "Note";
+
+        private void Start()
+        {
+            notes = new List<Note>();
+            Vector3[] _layout = levelLayout.LoadLevel();
+            foreach (Vector3 pos in _layout)
+            {
+                Note note = Instantiate(arrowPrefab).GetComponent<Note>();
+                note.transform.position = pos;
+                note.Reposition();
+                notes.Add(note);
+            }
+        }
 
         #region Unity Methods
         private void Update()
@@ -35,6 +53,10 @@ namespace BerryBeats.Composer
                 DragEnd();
             }
 
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                levelLayout.SaveLevel(notes.ToArray());
+            }
         }
         #endregion
 
@@ -46,6 +68,24 @@ namespace BerryBeats.Composer
                 return;
             Transform t = Instantiate(arrowPrefab, noteHolder).transform;
             t.position = new Vector2(Mathf.RoundToInt(hit.point.x), hit.point.y);
+            Note note = t.GetComponent<Note>();
+            notes.Add(note);
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, .3f);
+            foreach (Collider2D c in colliders)
+            {
+                if (c == this.GetComponent<Collider2D>() || !c.CompareTag(tagname))
+                {
+                    continue;
+                }
+                else
+                {
+                    notes.Remove(c.GetComponent<Note>());
+                    Destroy(c.gameObject);
+                }
+            }
+
+            note.Reposition();
         }
 
         void DragStart()
@@ -53,12 +93,12 @@ namespace BerryBeats.Composer
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (!hit.collider.CompareTag(tagname))
                 return;
-            selectedArrow = hit.transform;
+            selectedArrow = hit.transform.GetComponent<Note>();
         }
 
         void DragEnd()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.position, .3f);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.transform.position, .3f);
 
             foreach (Collider2D c in colliders)
             {
@@ -68,9 +108,12 @@ namespace BerryBeats.Composer
                 }
                 else
                 {
+                    notes.Remove(c.GetComponent<Note>());
                     Destroy(c.gameObject);
                 }
             }
+            selectedArrow.Reposition();
+            notes.ToArray()[notes.IndexOf(selectedArrow)].transform.position = selectedArrow.transform.position;
             selectedArrow = null;
         }
 

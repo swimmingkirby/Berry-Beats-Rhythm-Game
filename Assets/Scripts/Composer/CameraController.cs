@@ -15,7 +15,10 @@ namespace BerryBeats.Composer
                 moveVector += scrollSpeed * Time.deltaTime;
             }
             else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-                moveVector -= scrollSpeed * Time.deltaTime;
+            {
+                if(transform.position.y - scrollSpeed * Time.deltaTime > 0)
+                    moveVector -= scrollSpeed * Time.deltaTime;
+            }
 
             transform.position += Vector3.up * moveVector;
         }

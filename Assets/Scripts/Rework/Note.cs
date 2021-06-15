@@ -18,18 +18,23 @@ namespace BerryBeats.Rework
 
         private void OnEnable()
         {
-            switch (transform.position.x)
+            Reposition();
+        }
+
+        public void Reposition()
+        {
+            switch (transform.localPosition.x)
             {
-                case -1.5f:
+                case -1f:
                     spriteRenderer.sprite = leftSprite;
                     break;
-                case -0.5f:
+                case -0f:
                     spriteRenderer.sprite = upSprite;
                     break;
-                case 0.5f:
+                case 1f:
                     spriteRenderer.sprite = downSprite;
                     break;
-                case 1.5f:
+                case 2f:
                     spriteRenderer.sprite = rightSprite;
                     break;
             }
