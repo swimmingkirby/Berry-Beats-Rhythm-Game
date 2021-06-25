@@ -1,36 +1,35 @@
 using UnityEngine;
 using BerryBeats.Rework;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using UnityEngine.UI;
 
 namespace BerryBeats.Composer
 {
     public class ComposerHandler : MonoBehaviour
     {
-
         [Header("Component")]
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private Transform noteHolder;
-        [SerializeField] private Level levelLayout;
+        [SerializeField] private InputField fileName;
 
         //! Cache
         private RaycastHit2D hit;
         private Note selectedArrow;
         private int selectedIndex;
         private List<Note> notes;
+        BinaryFormatter formatter;
 
-        private const string tagname = "Note";
+        private const string NOTE_TAG = "Note";
+        private const string BG_TAG = "BG";
+        private const string PATH = "Assets/Levels/";
+        private string currentPath = "";
 
         private void Start()
         {
+            formatter = new BinaryFormatter();
             notes = new List<Note>();
-            Vector3[] _layout = levelLayout.LoadLevel();
-            foreach (Vector3 pos in _layout)
-            {
-                Note note = Instantiate(arrowPrefab).GetComponent<Note>();
-                note.transform.position = pos;
-                note.Reposition();
-                notes.Add(note);
-            }
         }
 
         #region Unity Methods
@@ -52,11 +51,6 @@ namespace BerryBeats.Composer
             {
                 DragEnd();
             }
-
-            if (Input.GetKeyDown(KeyCode.LeftControl))
-            {
-                levelLayout.SaveLevel(notes.ToArray());
-            }
         }
         #endregion
 
@@ -64,7 +58,8 @@ namespace BerryBeats.Composer
         private void SpawnNote()
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider.CompareTag(tagname))
+
+            if (!hit || !hit.collider.CompareTag(BG_TAG))
                 return;
             Transform t = Instantiate(arrowPrefab, noteHolder).transform;
             t.position = new Vector2(Mathf.RoundToInt(hit.point.x), hit.point.y);
@@ -74,7 +69,7 @@ namespace BerryBeats.Composer
             Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, .3f);
             foreach (Collider2D c in colliders)
             {
-                if (c == this.GetComponent<Collider2D>() || !c.CompareTag(tagname))
+                if (c == this.GetComponent<Collider2D>() || !c.CompareTag(NOTE_TAG))
                 {
                     continue;
                 }
@@ -91,18 +86,20 @@ namespace BerryBeats.Composer
         void DragStart()
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (!hit.collider.CompareTag(tagname))
+            if (!hit.collider.CompareTag(NOTE_TAG))
                 return;
             selectedArrow = hit.transform.GetComponent<Note>();
         }
 
         void DragEnd()
         {
+            if (!selectedArrow)
+                return;
             Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.transform.position, .3f);
 
             foreach (Collider2D c in colliders)
             {
-                if (c == selectedArrow.GetComponent<Collider2D>() || !c.CompareTag(tagname))
+                if (c == selectedArrow.GetComponent<Collider2D>() || !c.CompareTag(NOTE_TAG))
                 {
                     continue;
                 }
@@ -125,5 +122,81 @@ namespace BerryBeats.Composer
             selectedArrow.transform.position = tempPos;
         }
         #endregion
+
+        public void LoadLevel()
+        {
+            if(fileName.text.Equals(""))
+            {
+                Debug.LogError("File Name Cannot be Empty");
+                return;
+            }
+            try
+            {
+                currentPath = PATH + fileName.text.Trim() + ".sng";
+                if (File.Exists(currentPath))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    FileStream fs = new FileStream(currentPath, FileMode.Open);
+
+                    Level level = formatter.Deserialize(fs) as Level;
+                    fs.Close();
+                    performLoad(level.LevelArray);
+                    Debug.Log("Level Loaded Successfully");
+                }
+                else
+                {
+                    Debug.Log("File Not Found");
+                    performLoad(new ArrayPosition[0]);
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+        }
+
+        public void SaveLevel()
+        {
+            if (fileName.text.Equals(""))
+            {
+                Debug.LogError("File Name Cannot be Empty");
+                return;
+            }
+            try
+            {
+                currentPath = PATH + fileName.text.Trim() + ".sng";
+                if (!Directory.Exists("Levels"))
+                    Directory.CreateDirectory("Levels");
+
+                FileStream fs = new FileStream(currentPath, FileMode.Create);
+
+                Level level = new Level(notes.ToArray());
+                formatter.Serialize(fs, level);
+                Debug.Log("Level Saved Successfully");
+                fs.Close();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e.Message);
+            }
+
+        }
+
+        private void performLoad(ArrayPosition[] _layout)
+        {
+            foreach(Transform child in noteHolder)
+            {
+                Destroy(child.gameObject);
+            }
+            notes = new List<Note>();
+
+            foreach (ArrayPosition pos in _layout)
+            {
+                Note note = Instantiate(arrowPrefab, noteHolder).GetComponent<Note>();
+                note.transform.position = new Vector3(pos.x, pos.y, 0);
+                note.Reposition();
+                notes.Add(note);
+            }
+        }
     }
 }

@@ -16,11 +16,14 @@ namespace BerryBeats.Composer
             }
             else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
-                if(transform.position.y - scrollSpeed * Time.deltaTime > 0)
-                    moveVector -= scrollSpeed * Time.deltaTime;
+                moveVector -= scrollSpeed * Time.deltaTime;
             }
 
-            transform.position += Vector3.up * moveVector;
+            if(Input.GetAxis("Mouse ScrollWheel") != 0)
+                moveVector += Mathf.Sign(Input.GetAxisRaw("Mouse ScrollWheel")) * Time.deltaTime * scrollSpeed;
+
+            if (transform.position.y + moveVector > 0)
+                transform.position += Vector3.up * moveVector;
         }
     }
 }

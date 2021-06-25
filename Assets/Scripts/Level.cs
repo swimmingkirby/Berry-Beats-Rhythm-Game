@@ -2,26 +2,32 @@ using UnityEngine;
 
 namespace BerryBeats.Rework
 {
-    [CreateAssetMenu(menuName = "ScriptableObjects/LevelLayout", fileName = "LevelLayout")]
-    public class Level : ScriptableObject
+    [System.Serializable]
+    public class Level
     {
-        [SerializeField] private Vector3[] LevelArray;
+        public ArrayPosition[] LevelArray;
 
-        public Vector3[] LoadLevel()
+        public Level(Note[] notes)
         {
-            if (LevelArray != null && LevelArray.Length > 0)
-                return LevelArray;
-            else
-                return new Vector3[0];
-        }
+            LevelArray = new ArrayPosition[notes.Length];
 
-        public void SaveLevel(Note[] notes)
-        {
-            LevelArray = new Vector3[notes.Length];
-            for (int i = 0; i< notes.Length; i++)
+            for(int i = 0; i< notes.Length; i++)
             {
-                LevelArray[i] = notes[i].transform.position;
+                LevelArray[i] = new ArrayPosition(notes[i].transform.position.x, notes[i].transform.position.y);
             }
+        }
+    }
+
+    [System.Serializable]
+    public class ArrayPosition
+    {
+        public float x;
+        public float y;
+
+        public ArrayPosition(float x, float y)
+        {
+            this.x = x;
+            this.y = y;
         }
     }
 }
