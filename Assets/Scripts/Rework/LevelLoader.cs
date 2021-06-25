@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace BerryBeats.Rework
 {
@@ -8,8 +10,9 @@ namespace BerryBeats.Rework
         //! Variables
         #region Private Variables
         [Header("Components")]
-        [SerializeField] private Texture2D levelImage;
         [SerializeField] private GameObject notePrefab;
+        [SerializeField] private string fileName = "";
+
 
         [Header("Properties")]
         [SerializeField] private int poolSize;
@@ -17,16 +20,18 @@ namespace BerryBeats.Rework
         #endregion
 
         #region Cache
-        private List<Vector2> coords;
+        BinaryFormatter formatter;
+        private Vector2[] coords;
         private GameObject[] pool;
         private int noteIndex;
         #endregion
+
+        private const string PATH = "Assets/Levels/";
 
         //! Methods
         #region Unity Methods
         private void Start()
         {
-            coords = new List<Vector2>();
             pool = new GameObject[poolSize];
             noteIndex = 0;
 
@@ -40,11 +45,30 @@ namespace BerryBeats.Rework
         {
             note.SetActive(false);
 
-            if(noteIndex < coords.Count - 1)
+            if(noteIndex < coords.Length - 1)
             {
-                note.transform.position = coords[noteIndex] + (Vector2)transform.position;
+                note.transform.position = coords[noteIndex] + (Vector2)transform.position + offset;
                 note.SetActive(true);
                 noteIndex++;
+            }
+        }
+
+        public void CreateNote(Vector2 position)
+        {
+            for (int i = 0; i < poolSize; i++)
+            {
+                if (pool[i].activeInHierarchy)
+                {
+                    continue;
+                }
+                else
+                {
+                    pool[i].transform.position = position + (Vector2)transform.position + offset;
+                    pool[i].SetActive(true);
+                    pool[i].GetComponent<Note>().Reposition();
+                    noteIndex++;
+                    break;
+                }
             }
         }
         #endregion
@@ -52,21 +76,32 @@ namespace BerryBeats.Rework
         #region Private Methods
         private void initialize()
         {
-            for (int y = 0; y < levelImage.height; y++)
+            if (fileName.Equals(""))
             {
-                for (int x = 0; x < levelImage.width; x++)
+                Debug.LogError("File Name Cannot be Empty");
+                return;
+            }
+            try
+            {
+                fileName = PATH + fileName.Trim() + ".sng";
+
+                if (File.Exists(fileName))
                 {
-                    if (levelImage.GetPixel(x, y) == Color.black)
-                    {
-                        coords.Add(new Vector2(x, y) + offset);
-                    }
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    FileStream fs = new FileStream(fileName, FileMode.Open);
+                    Level level = formatter.Deserialize(fs) as Level;
+                    fs.Close();
+                    performLoad(level.LevelArray);
+                }
+                else
+                {
+                    Debug.Log("File Not Found");
+                    performLoad(new ArrayPosition[0]);
                 }
             }
-
-            for (int i = 0; i < poolSize; i++)
+            catch (System.Exception e)
             {
-                pool[i] = Instantiate(notePrefab, this.transform);
-                pool[i].SetActive(false);
+                Debug.LogError(e.Message);
             }
         }
 
@@ -78,21 +113,24 @@ namespace BerryBeats.Rework
             }
         }
 
-        private void CreateNote(Vector2 position)
+        private void performLoad(ArrayPosition[] _layout)
         {
+            foreach (GameObject child in pool)
+            {
+                Destroy(child); //Reset
+            }
+
+            coords = new Vector2[_layout.Length];
+ 
+            for (int i = 0; i < _layout.Length; i++)
+            {
+                coords[i] = new Vector2(_layout[i].x, _layout[i].y);
+            }
+
             for (int i = 0; i < poolSize; i++)
             {
-                if (pool[i].activeInHierarchy)
-                {
-                    continue;
-                }
-                else
-                {
-                    pool[i].transform.position = position + (Vector2)transform.position;
-                    pool[i].SetActive(true);
-                    noteIndex++;
-                    break;
-                }
+                pool[i] = Instantiate(notePrefab, this.transform);
+                pool[i].SetActive(false);
             }
         }
         #endregion
