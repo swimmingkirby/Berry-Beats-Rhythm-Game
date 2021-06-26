@@ -19,6 +19,8 @@ namespace BerryBeats.Rework
 
         [SerializeField] private KeyCode keyToPress;
 
+        //[SerializeField] private GameObject hitEffect, goodEffect, perfectEffect, missEffect;
+
         private Note focusedNote;
         #endregion
 
@@ -64,23 +66,50 @@ namespace BerryBeats.Rework
                     EarlyMiss();
                 }
 
-                spriteRenderer.sprite = pressedImage;
+               // spriteRenderer.sprite = pressedImage;
             }
-            if (Input.GetKeyUp(keyToPress))
+          /*  if (Input.GetKeyUp(keyToPress))
             {
                 spriteRenderer.sprite = defaultImage;
             }
+          */
         }
 
         private void NoteHit(Note note)
         {
-            GameManager2.Instance.NoteHit();
+            //GameManager2.Instance.NoteHit();
             levelLoader.DestroyNote(note.gameObject);
+
+            if (Mathf.Abs(transform.position.y) > 0.25)
+            {
+                GameManager.instance.Hit(HitTypes.Regular);
+                //Instantiate(hitEffect, hitEffect.transform.position, hitEffect.transform.rotation);
+
+                Debug.Log("Hit!");
+            }
+            else if ((Mathf.Abs(transform.position.y) > 0.05f))
+            {
+                GameManager.instance.Hit(HitTypes.Good);
+                //Instantiate(goodEffect, goodEffect.transform.position, goodEffect.transform.rotation);
+
+                Debug.Log("Good!");
+            }
+            else
+            {
+                GameManager.instance.Hit(HitTypes.Perfect);
+                //Instantiate(perfectEffect, perfectEffect.transform.position, perfectEffect.transform.rotation);
+
+                Debug.Log("Perfect!");
+            }
+
         }
 
         private void EarlyMiss()
         {
-            GameManager2.Instance.NoteMissed();
+            //GameManager2.Instance.NoteMissed();
+            Debug.Log("Early Miss!");
+            GameManager.instance.NoteMissed();
+            //Instantiate(missEffect, missEffect.transform.position, missEffect.transform.rotation);
         }
         #endregion
     }

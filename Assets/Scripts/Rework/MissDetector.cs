@@ -10,9 +10,11 @@ namespace BerryBeats.Rework
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log("Miss!");
             if (other.CompareTag("Note"))
             {
-                GameManager2.Instance.NoteMissed();
+                //GameManager2.Instance.NoteMissed();
+                GameManager.instance.NoteMissed();
                 levelLoader.DestroyNote(other.gameObject);
             }            
         }
