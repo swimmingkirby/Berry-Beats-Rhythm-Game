@@ -3,17 +3,21 @@ using UnityEngine;
 
 namespace BerryBeats.BattleSystem
 {
+
     public enum ArrowDirection
     {
         Up,
         Left,
         Right,
-        Down
+        Down,
+        Idle
     }
 
     [RequireComponent(typeof(CustomAnimator))]
     public class Dancer : MonoBehaviour
     {
+        public float timeLeft = 0.0f;
+
         [SerializeField] private DancerObject dancer;
         private CustomAnimator animator;
 
@@ -25,14 +29,39 @@ namespace BerryBeats.BattleSystem
 
         public void Update()
         {
+            timeLeft += Time.deltaTime;
             if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                
                 Hit(ArrowDirection.Up);
+                timeLeft = 0.0f;
+            }
             if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
                 Hit(ArrowDirection.Down);
+                timeLeft = 0.0f;
+
+            }
             if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
                 Hit(ArrowDirection.Right);
+                timeLeft = 0.0f;
+
+            }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
                 Hit(ArrowDirection.Left);
+                timeLeft = 0.0f;
+
+            }
+
+           if (timeLeft > 1f)
+            {
+                animator.SetFrames(dancer.FramesIdle);
+                timeLeft = 0.0f;
+                
+            }
+               
         }
 
         /// <summary>

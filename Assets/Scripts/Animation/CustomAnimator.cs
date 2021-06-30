@@ -22,7 +22,7 @@ public class CustomAnimator : MonoBehaviour
     {
         // By adding deltaTime each frame, it will count in seconds
         timer += Time.deltaTime;
-
+        
         if (timer > frameDelay)
         {
             frame += 1;
@@ -52,6 +52,7 @@ public class CustomAnimator : MonoBehaviour
     /// <param name="input"></param>
     public void SetFrames(Sprite[] input)
     {
+        timer = frameDelay;
         frames = input;
         frame = 0;
     }
