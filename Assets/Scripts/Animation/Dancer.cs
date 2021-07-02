@@ -10,7 +10,13 @@ namespace BerryBeats.BattleSystem
         Left,
         Right,
         Down,
-        Idle
+        Idle,
+        UpLeft,
+        DownLeft,
+        UpRight,
+        DownRight,
+        UpDown,
+        LeftRight
     }
 
     [RequireComponent(typeof(CustomAnimator))]
@@ -54,8 +60,44 @@ namespace BerryBeats.BattleSystem
                 timeLeft = 0.0f;
 
             }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Hit(ArrowDirection.UpLeft);
+                timeLeft = 0.0f;
 
-           if (timeLeft > 1f)
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Hit(ArrowDirection.DownLeft);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                Hit(ArrowDirection.UpRight);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Hit(ArrowDirection.DownRight);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                Hit(ArrowDirection.UpDown);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                Hit(ArrowDirection.LeftRight);
+                timeLeft = 0.0f;
+
+            }
+
+            if (timeLeft > 1f)
             {
                 animator.SetFrames(dancer.FramesIdle);
                 timeLeft = 0.0f;

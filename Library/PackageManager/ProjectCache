@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637602550503637180
-    m_Hash: 3214003137
+      ticks: 637606775714005148
+    m_Hash: 1431242572
   m_LockFileStatus:
     m_FilePath: C:/Users/hamza/Desktop/berry/berrybeats/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637602550503637180
-    m_Hash: 3299157558
+      ticks: 637606775714295751
+    m_Hash: 2228434150
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,60 @@ m_LocalPackages:
 m_ProjectPath: C:/Users/hamza/Desktop/berry/berrybeats/Packages
 m_EditorVersion: 2021.1.7f1 (d91830b65d9b)
 m_ResolvedPackages:
+- packageId: com.unity.2d.sprite@1.0.0
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.0
+  source: 2
+  resolvedPath: C:\Users\hamza\Desktop\berry\berrybeats\Library\PackageCache\com.unity.2d.sprite@1.0.0
+  assetPath: Packages/com.unity.2d.sprite
+  name: com.unity.2d.sprite
+  displayName: 2D Sprite
+  author:
+    name: 
+    email: 
+    url: 
+  category: 2D
+  type: 
+  description: Use Unity Sprite Editor Window to create and edit Sprite asset properties
+    like pivot, borders and Physics shape
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    compatible:
+    - 1.0.0
+    verified: 1.0.0
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - 2d
+  - sprite
+  - sprite editor window
+  registry:
+    id: 
+    name: 
+    url: 
+    scopes: []
+    isDefault: 0
+    capabilities: 0
+  hasRegistry: 0
+  hideInEditor: 1
+  entitlements:
+    isAllowed: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 1.0.0
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.3.9
   testable: 0
   isDirectDependency: 1
@@ -393,10 +447,12 @@ m_ResolvedPackages:
     - 1.1.22
     - 1.1.24
     - 1.1.26
+    - 1.1.27
     compatible:
     - 1.1.24
     - 1.1.26
-    verified: 1.1.26
+    - 1.1.27
+    verified: 1.1.27
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -596,12 +652,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 3.0.4
     nextVersion: 
-- packageId: com.unity.timeline@1.5.4
+- packageId: com.unity.timeline@1.5.5
   testable: 0
   isDirectDependency: 1
-  version: 1.5.4
+  version: 1.5.5
   source: 1
-  resolvedPath: C:\Users\hamza\Desktop\berry\berrybeats\Library\PackageCache\com.unity.timeline@1.5.4
+  resolvedPath: C:\Users\hamza\Desktop\berry\berrybeats\Library\PackageCache\com.unity.timeline@1.5.5
   assetPath: Packages/com.unity.timeline
   name: com.unity.timeline
   displayName: Timeline
@@ -679,6 +735,7 @@ m_ResolvedPackages:
     - 1.6.0-pre.3
     - 1.6.0-pre.4
     - 1.6.0-pre.5
+    - 1.6.1
     compatible:
     - 1.5.4
     - 1.5.5
@@ -686,6 +743,7 @@ m_ResolvedPackages:
     - 1.6.0-pre.3
     - 1.6.0-pre.4
     - 1.6.0-pre.5
+    - 1.6.1
     verified: 1.5.5
   dependencies:
   - name: com.unity.modules.director
@@ -723,13 +781,13 @@ m_ResolvedPackages:
   entitlements:
     isAllowed: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637510732040000000
+  datePublishedTicks: 637557616440000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: 7fe777cafcad93e7e44db6bd6a18ed5bd55e781a
+    revision: 4bb067f24973c7cfa1e4a453615e43083ce6855d
     path: 
   unityLifecycle:
     version: 1.5.4
