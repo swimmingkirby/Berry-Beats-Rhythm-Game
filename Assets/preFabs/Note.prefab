@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1847033139
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8191739510646017925, guid: eddd91d751bfdcd48acb99493a21cf91, type: 3}
+  m_Sprite: {fileID: 3318904089994504119, guid: da9b821d621eafd4582b422102726e07, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c129bf27ee3e23e4686cfe023bd51739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downSprite: {fileID: -480254276019886394, guid: eddd91d751bfdcd48acb99493a21cf91, type: 3}
-  upSprite: {fileID: 3713549098536957005, guid: eddd91d751bfdcd48acb99493a21cf91, type: 3}
-  leftSprite: {fileID: -8191739510646017925, guid: eddd91d751bfdcd48acb99493a21cf91, type: 3}
-  rightSprite: {fileID: -6460607209241108654, guid: eddd91d751bfdcd48acb99493a21cf91, type: 3}
+  downSprite: {fileID: 3318904089994504119, guid: da9b821d621eafd4582b422102726e07, type: 3}
+  upSprite: {fileID: -1033766676993296678, guid: da9b821d621eafd4582b422102726e07, type: 3}
+  leftSprite: {fileID: 2319643638384702094, guid: da9b821d621eafd4582b422102726e07, type: 3}
+  rightSprite: {fileID: 5287939958834139383, guid: da9b821d621eafd4582b422102726e07, type: 3}
 --- !u!50 &8363238271538557347
 Rigidbody2D:
   serializedVersion: 4
@@ -140,7 +140,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18, y: 18}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
