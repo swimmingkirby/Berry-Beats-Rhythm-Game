@@ -67,7 +67,6 @@
     <Compile Include="Assets\Scripts\EditorUI.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
-    <Compile Include="Assets\Scripts\menumovement.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
     <Compile Include="Assets\Scripts\Rework\Note.cs" />
@@ -81,7 +80,6 @@
     <Compile Include="Assets\Scripts\Rework\GameManager2.cs" />
     <Compile Include="Assets\Scripts\Rework\MissDetector.cs" />
     <Compile Include="Assets\Scripts\Animation\Dancer.cs" />
-    <Compile Include="Assets\Scripts\pulseeffect.cs" />
     <Compile Include="Assets\Scripts\DancerObject.cs" />
     <Compile Include="Assets\Scripts\effectObject.cs" />
     <Compile Include="Assets\Scripts\Composer\CameraController.cs" />
@@ -706,9 +704,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
