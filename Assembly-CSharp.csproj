@@ -80,13 +80,13 @@
     <Compile Include="Assets\Scripts\Rework\GameManager2.cs" />
     <Compile Include="Assets\Scripts\Rework\MissDetector.cs" />
     <Compile Include="Assets\Scripts\Animation\Dancer.cs" />
-    <Compile Include="Assets\Scripts\DancerObject.cs" />
     <Compile Include="Assets\Scripts\effectObject.cs" />
     <Compile Include="Assets\Scripts\Composer\CameraController.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\Scripts\Animation\CustomAnimator.cs" />
     <Compile Include="Assets\Scripts\NoteArranger.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\Scripts\DancerObject.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

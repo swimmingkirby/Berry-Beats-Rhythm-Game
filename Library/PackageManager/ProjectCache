@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637602550503637180
+      ticks: 637609110343255763
     m_Hash: 3214003137
   m_LockFileStatus:
     m_FilePath: C:/Users/hamza/Desktop/berry/berrybeats/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637602550503637180
+      ticks: 637609110343255763
     m_Hash: 3299157558
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -393,10 +393,12 @@ m_ResolvedPackages:
     - 1.1.22
     - 1.1.24
     - 1.1.26
+    - 1.1.27
     compatible:
     - 1.1.24
     - 1.1.26
-    verified: 1.1.26
+    - 1.1.27
+    verified: 1.1.27
   dependencies:
   - name: com.unity.ext.nunit
     version: 1.0.6
@@ -679,6 +681,7 @@ m_ResolvedPackages:
     - 1.6.0-pre.3
     - 1.6.0-pre.4
     - 1.6.0-pre.5
+    - 1.6.1
     compatible:
     - 1.5.4
     - 1.5.5
@@ -686,6 +689,7 @@ m_ResolvedPackages:
     - 1.6.0-pre.3
     - 1.6.0-pre.4
     - 1.6.0-pre.5
+    - 1.6.1
     verified: 1.5.5
   dependencies:
   - name: com.unity.modules.director

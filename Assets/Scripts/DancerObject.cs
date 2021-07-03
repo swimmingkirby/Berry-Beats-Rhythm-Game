@@ -16,6 +16,12 @@ namespace BerryBeats.ScriptableObjects
         public Sprite[] FramesRight;
         public Sprite[] FramesDown;
         public Sprite[] FramesIdle;
+        public Sprite[] FramesUpLeft;
+        public Sprite[] FramesDownLeft;
+        public Sprite[] FramesUpRight;
+        public Sprite[] FramesDownRight;
+        public Sprite[] FramesUpDown;
+        public Sprite[] FramesLeftRight;
 
         /// <summary>
         /// Returns the spritearray for the given direction
@@ -27,13 +33,73 @@ namespace BerryBeats.ScriptableObjects
             switch (dir)
             {
                 case ArrowDirection.Up:
-                    return FramesUp;
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        return FramesUpLeft;
+                    }
+                    else if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        return FramesUpRight;
+                    }
+                    else if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        return FramesUpDown;
+                    }
+                    else
+                    {
+                        return FramesUp;
+                    }
                 case ArrowDirection.Left:
-                    return FramesLeft;
+                    if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        return FramesLeftRight;
+                    } 
+                    else if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        return FramesUpLeft;
+                    } 
+                    else if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        return FramesDownLeft;
+                    }
+                    else
+                    {
+                        return FramesLeft;
+                    }
                 case ArrowDirection.Right:
-                    return FramesRight;
+                    if (Input.GetKey(KeyCode.DownArrow))
+                    {
+                        return FramesDownRight;
+                    }
+                    else if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        return FramesUpRight;
+                    }
+                    else if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        return FramesLeftRight;
+                    }
+                    else
+                    {
+                        return FramesRight;
+                    }
                 case ArrowDirection.Down:
-                    return FramesDown;
+                    if (Input.GetKey(KeyCode.LeftArrow))
+                    {
+                        return FramesDownLeft;
+                    }
+                    else if (Input.GetKey(KeyCode.RightArrow))
+                    {
+                        return FramesDownRight;
+                    }
+                    else if (Input.GetKey(KeyCode.UpArrow))
+                    {
+                        return FramesUpDown;
+                    }
+                    else
+                    {
+                        return FramesDown;
+                    }
                 default:
                     break;
             }

@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d662ac4f4e7d949be91432cba5dd1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 697564756ee6e0d4a972a898f9b2737d, type: 3}
   m_Name: Dancer_TestDoggo
   m_EditorClassIdentifier: 
   Name: Test Doggo
@@ -39,3 +39,9 @@ MonoBehaviour:
   - {fileID: -7411081210458038955, guid: 588f4b93796d5e241993325b436f1667, type: 3}
   - {fileID: 5977759552167465597, guid: 588f4b93796d5e241993325b436f1667, type: 3}
   - {fileID: 7061811440995916192, guid: 588f4b93796d5e241993325b436f1667, type: 3}
+  FramesUpLeft: []
+  FramesDownLeft: []
+  FramesUpRight: []
+  FramesDownRight: []
+  FramesUpDown: []
+  FramesLeftRight: []
