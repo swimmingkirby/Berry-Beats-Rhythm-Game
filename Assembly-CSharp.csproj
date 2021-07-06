@@ -63,6 +63,7 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Scripts\Rework\NoteDetector.cs" />
     <Compile Include="Assets\Scripts\Rework\LevelLoader.cs" />
+    <Compile Include="Assets\Scripts\pulseeffect.cs" />
     <Compile Include="Assets\HealthBar\health.cs" />
     <Compile Include="Assets\Scripts\EditorUI.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
