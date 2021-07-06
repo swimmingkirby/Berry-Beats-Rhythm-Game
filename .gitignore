@@ -2,19 +2,12 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-[Ll]ibrary/
 /[Ll]ibrary/
-[Tt]emp/
 /[Tt]emp/
-[Oo]bj/
 /[Oo]bj/
-[Bb]uild/
 /[Bb]uild/
-[Bb]uilds/
 /[Bb]uilds/
-[Ll]ogs/
 /[Ll]ogs/
-[Uu]ser[Ss]ettings/
 /[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
@@ -53,7 +46,6 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
-*.log
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -77,67 +69,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Library/Artifacts/
-Library/ArtifactDB
-Library/SourceAssetDB
-
-# =============== #
-# Unity generated #
-# =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-/[Bb]uilds/
-/[Ll]ibrary/
-sysinfo.txt
-*.stackdump
-/Assets/AssetStoreTools*
-*.apk
-*.unitypackage
- 
-# ===================================== #
-# Visual Studio / MonoDevelop generated #
-# ===================================== #
-[Ee]xported[Oo]bj/
-.vs/
-/*.userprefs
-/*.csproj
-/*.pidb
-*.pidb.meta
-/*.suo
-/*.sln*
-/*.user
-/*.unityproj
-/*.booproj
-.consulo/
-/*.tmp
-/*.svd
- 
-# ============ #
-# OS generated #
-# ============ #
-.DS_Store*
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
-[Tt]humbs.db
-[Dd]esktop.ini
-Corridor/Library/ShaderCache/
-Corridor/Library/metadata/
-Assembly-CSharp.csproj
-Assembly-CSharp-Editor.csproj
-Library/ArtifactDB
-Library/ArtifactDB-lock
-Library/CurrentLayout-default.dwlt
-Library/EditorSnapSettings.asset
-Library/LastSceneManagerSetup.txt
-Library/PackageManager/ProjectCache
-Library/PackageManager/ProjectCache.md5
-Library/SceneVisibilityState.asset
-Library/SourceAssetDB
-Library/SourceAssetDB-lock
-Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json
-Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json
-Logs/shadercompiler-UnityShaderCompiler.exe0.log
