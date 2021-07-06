@@ -89,6 +89,7 @@
     <Compile Include="Assets\Scripts\Animation\CustomAnimator.cs" />
     <Compile Include="Assets\Scripts\NoteArranger.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\Scripts\Rework\PlayerHealthbar.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

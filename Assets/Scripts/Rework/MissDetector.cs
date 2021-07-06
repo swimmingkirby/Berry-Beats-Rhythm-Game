@@ -1,8 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BerryBeats.Rework
 {
     [RequireComponent(typeof(Rigidbody2D))][RequireComponent(typeof(BoxCollider2D))]
+
     public class MissDetector : MonoBehaviour
     {
         [Header("Components")]

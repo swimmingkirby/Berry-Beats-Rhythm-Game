@@ -56,6 +56,11 @@ namespace BerryBeats {
         private int currentCombo;
 
         public static GameManager instance;
+
+        [Header("Health Bars")]
+        [SerializeField] GameObject player_healthbar;
+        [SerializeField] float health_modifier = 0.05f;
+
         private void Awake()
         {
             // In awake so it will trigger before every Start(), preventing mistakes from desync
@@ -112,6 +117,8 @@ namespace BerryBeats {
             comboText.text = "Combo: " + currentCombo;
             currentScore += scorePerNote * currentMultiplier;
             scoreText.text = "Score: " + currentScore;
+
+            player_healthbar.GetComponent<PlayerHealthbar>().ModifyHealth(health_modifier);
         }
 
         public void Hit(HitTypes type)
@@ -146,6 +153,8 @@ namespace BerryBeats {
             recordedCombos.Add(currentCombo);
             currentCombo = 0;
             comboText.text = "Combo: " + currentCombo;
+
+            player_healthbar.GetComponent<PlayerHealthbar>().ModifyHealth(-health_modifier);
         }
 
         public void CreateEndCard()
