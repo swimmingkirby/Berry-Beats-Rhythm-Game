@@ -62,28 +62,32 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeMenu(int input)
     {
-        menu_indicator += input;
-
-        if (menu_indicator == -1 || menu_indicator == 3)
+        if (!has_to_move)
         {
-            if (menu_indicator == -1)
-                menu_indicator = 2;
-            if (menu_indicator == 3)
-                menu_indicator = 0;
-        }
- 
-        if(input == 1)
-        {
-            destination = new Vector3(standard_x_pos, background.transform.position.y - image_height);
-        }
-        if (input == -1)
-        {
-            destination = new Vector3(standard_x_pos, background.transform.position.y + image_height);
-        }
 
-        has_to_move = true;
-        menu_text.sprite = texts[menu_indicator];
+            menu_indicator += input;
 
+            if (menu_indicator == -1 || menu_indicator == 3)
+            {
+                if (menu_indicator == -1)
+                    menu_indicator = 2;
+                if (menu_indicator == 3)
+                    menu_indicator = 0;
+            }
+
+            if (input == 1)
+            {
+                destination = new Vector3(standard_x_pos, background.transform.position.y - image_height);
+            }
+            if (input == -1)
+            {
+                destination = new Vector3(standard_x_pos, background.transform.position.y + image_height);
+            }
+
+            has_to_move = true;
+            menu_text.sprite = texts[menu_indicator];
+
+        }
     }
 
 }
