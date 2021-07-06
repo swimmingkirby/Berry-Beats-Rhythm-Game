@@ -818,7 +818,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d999a965a97bd4a42a6736e703a2b978, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24159b9877138a041b100e4f2c2aa17d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -908,9 +908,9 @@ MonoBehaviour:
   background: {fileID: 949539674}
   menu_text: {fileID: 1356599200}
   texts:
-  - {fileID: 21300000, guid: 5fd5eb8d03b4728489f426a934afa65a, type: 3}
-  - {fileID: 21300000, guid: 5fd5eb8d03b4728489f426a934afa65a, type: 3}
-  - {fileID: 21300000, guid: 180190cea4da80c43b6e1703476191de, type: 3}
+  - {fileID: 21300000, guid: 23bbdcae2be3c424990dc660b1e9cfcf, type: 3}
+  - {fileID: 21300000, guid: cc619946fa80ddc44a635c12fea75889, type: 3}
+  - {fileID: 21300000, guid: e720b46e36fab6d4c865baac9b701847, type: 3}
   size_example: {fileID: 1977365849}
   transition_speed: 3000
 --- !u!4 &1095453354
@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1095453353}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: ChangeMenu
         m_Mode: 3
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d999a965a97bd4a42a6736e703a2b978, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24159b9877138a041b100e4f2c2aa17d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1095453353}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: ChangeMenu
         m_Mode: 3
