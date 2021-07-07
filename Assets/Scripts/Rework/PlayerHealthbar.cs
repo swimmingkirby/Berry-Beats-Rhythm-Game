@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerHealthbar : MonoBehaviour
 {
 
-    public float health = 1f; 
+    public float health = 1f;
+
+    [SerializeField] Transform bar_end_pos;
+    [SerializeField] GameObject berries;
 
     void Start()
     {
-        
+        health = 1f;
+
+        berries.transform.position = bar_end_pos.position;
     }
 
     
@@ -20,6 +25,8 @@ public class PlayerHealthbar : MonoBehaviour
             health = 2;
         if (health < 0)
             health = 0;
+
+        berries.transform.position = bar_end_pos.position;
     }
 
     public void ModifyHealth(float change)

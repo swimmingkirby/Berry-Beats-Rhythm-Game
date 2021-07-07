@@ -433,8 +433,7 @@ Transform:
   m_Children:
   - {fileID: 154192432}
   - {fileID: 1599097719}
-  - {fileID: 238477980}
-  - {fileID: 650952397}
+  - {fileID: 1064569579}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -459,7 +458,7 @@ GameObject:
   - component: {fileID: 238477980}
   - component: {fileID: 238477981}
   m_Layer: 0
-  m_Name: berries_0
+  m_Name: Blue Berry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -473,11 +472,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238477979}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.454, y: -0.016863346, z: 0}
+  m_LocalPosition: {x: -0.2961, y: -0.016863346, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 136083543}
-  m_RootOrder: 2
+  m_Father: {fileID: 1064569579}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &238477981
 SpriteRenderer:
@@ -1558,7 +1557,7 @@ GameObject:
   - component: {fileID: 650952397}
   - component: {fileID: 650952398}
   m_Layer: 0
-  m_Name: berries_1
+  m_Name: Pink Betty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1572,11 +1571,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650952396}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.453, y: 0.025, z: 0}
+  m_LocalPosition: {x: 0.2976, y: 0.025000095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 136083543}
-  m_RootOrder: 3
+  m_Father: {fileID: 1064569579}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &650952398
 SpriteRenderer:
@@ -2620,6 +2619,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041490617}
   m_CullTransparentMesh: 0
+--- !u!1 &1064569578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1064569579}
+  m_Layer: 0
+  m_Name: Berries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1064569579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064569578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0105, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 238477980}
+  - {fileID: 650952397}
+  m_Father: {fileID: 136083543}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160336783
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,7 +3456,7 @@ GameObject:
   - component: {fileID: 1599097719}
   - component: {fileID: 1599097720}
   m_Layer: 0
-  m_Name: pink
+  m_Name: Enemy Healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3735,7 +3766,7 @@ MonoBehaviour:
   finalComboText: {fileID: 423157157}
   resultsScreen: {fileID: 766832845}
   player_healthbar: {fileID: 154192431}
-  damage: 0.05
+  health_modifier: 0.05
 --- !u!4 &1663626859
 Transform:
   m_ObjectHideFlags: 0
@@ -4072,6 +4103,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791990392}
   m_CullTransparentMesh: 0
+--- !u!4 &1807538275 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5085007395211877850, guid: 3898a7684552f18428eb0060a7868c97, type: 3}
+  m_PrefabInstance: {fileID: 1611077781575551018}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1828094326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5266,6 +5302,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 136083543}
     m_Modifications:
+    - target: {fileID: 182338381579949095, guid: 3898a7684552f18428eb0060a7868c97, type: 3}
+      propertyPath: berries
+      value: 
+      objectReference: {fileID: 1064569578}
+    - target: {fileID: 182338381579949095, guid: 3898a7684552f18428eb0060a7868c97, type: 3}
+      propertyPath: bar_end_pos
+      value: 
+      objectReference: {fileID: 1807538275}
     - target: {fileID: 4127823167798559619, guid: 3898a7684552f18428eb0060a7868c97, type: 3}
       propertyPath: m_Name
       value: Player Healthbar
