@@ -11,6 +11,7 @@ namespace BerryBeats.Composer
     {
         [Header("Component")]
         [SerializeField] private GameObject arrowPrefab;
+        [SerializeField] private Transform cameraHolder;
         [SerializeField] private Transform noteHolder;
         [SerializeField] private InputField fileName;
 
@@ -20,6 +21,7 @@ namespace BerryBeats.Composer
         private int selectedIndex;
         private List<Note> notes;
         BinaryFormatter formatter;
+        private float scale;
 
         private const string NOTE_TAG = "Note";
         private const string BG_TAG = "BG";
@@ -30,6 +32,10 @@ namespace BerryBeats.Composer
         {
             formatter = new BinaryFormatter();
             notes = new List<Note>();
+            scale = arrowPrefab.GetComponent<Note>().ScaleX();
+            cameraHolder.localScale = new Vector3(scale, 1, 1);
+            cameraHolder.localPosition = new Vector3(scale/2, 0, cameraHolder.localPosition.z);
+            noteHolder.localScale = new Vector3(scale, 1, 1);
         }
 
         #region Unity Methods
@@ -62,11 +68,13 @@ namespace BerryBeats.Composer
             if (!hit || !hit.collider.CompareTag(BG_TAG))
                 return;
             Transform t = Instantiate(arrowPrefab, noteHolder).transform;
-            t.position = new Vector2(Mathf.RoundToInt(hit.point.x), hit.point.y);
+            t.localScale = new Vector3(1f / scale, 1f/scale, 1);
+            t.position = new Vector2(hit.point.x, hit.point.y);
             Note note = t.GetComponent<Note>();
+            Reposition(note);
             notes.Add(note);
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, .3f);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, scale * .4f);
             foreach (Collider2D c in colliders)
             {
                 if (c == this.GetComponent<Collider2D>() || !c.CompareTag(NOTE_TAG))
@@ -79,14 +87,12 @@ namespace BerryBeats.Composer
                     Destroy(c.gameObject);
                 }
             }
-
-            note.Reposition();
         }
 
         void DragStart()
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (!hit.collider.CompareTag(NOTE_TAG))
+            if (!hit.collider || !hit.collider.CompareTag(NOTE_TAG))
                 return;
             selectedArrow = hit.transform.GetComponent<Note>();
         }
@@ -95,7 +101,7 @@ namespace BerryBeats.Composer
         {
             if (!selectedArrow)
                 return;
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.transform.position, .3f);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.transform.position, scale * .4f);
 
             foreach (Collider2D c in colliders)
             {
@@ -109,7 +115,7 @@ namespace BerryBeats.Composer
                     Destroy(c.gameObject);
                 }
             }
-            selectedArrow.Reposition();
+            selectedArrow.Reposition2();
             notes.ToArray()[notes.IndexOf(selectedArrow)].transform.position = selectedArrow.transform.position;
             selectedArrow = null;
         }
@@ -117,9 +123,8 @@ namespace BerryBeats.Composer
         void PerfromDrag()
         {
             Vector2 tempPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            tempPos.x = Mathf.Round(tempPos.x);
-
             selectedArrow.transform.position = tempPos;
+            Reposition(selectedArrow);
         }
         #endregion
 
@@ -194,9 +199,16 @@ namespace BerryBeats.Composer
             {
                 Note note = Instantiate(arrowPrefab, noteHolder).GetComponent<Note>();
                 note.transform.localPosition = new Vector3(pos.x, pos.y, 0);
-                note.Reposition();
+                note.transform.localScale = new Vector3(1 / scale, 1 / scale, 1);
+                note.Reposition2();
                 notes.Add(note);
             }
+        }
+
+        private void Reposition(Note note)
+        {
+            note.transform.localPosition = new Vector3(Mathf.RoundToInt(note.transform.localPosition.x), note.transform.localPosition.y, note.transform.localPosition.z);
+            note.GetComponent<Note>().Reposition2();
         }
     }
 }

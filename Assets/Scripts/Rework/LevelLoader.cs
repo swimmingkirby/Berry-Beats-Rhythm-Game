@@ -16,6 +16,7 @@ namespace BerryBeats.Rework
         [Header("Properties")]
         [SerializeField] private int poolSize;
         [SerializeField] private Vector2 offset;
+        [SerializeField] private Vector2 scale;
         #endregion
 
         #region Cache
@@ -46,7 +47,7 @@ namespace BerryBeats.Rework
 
             if(noteIndex < coords.Length)
             {
-                note.transform.localPosition = coords[noteIndex] + offset;
+                note.transform.localPosition = coords[noteIndex] * scale - offset;
                 note.SetActive(true);
                 noteIndex++;
             }
@@ -62,7 +63,7 @@ namespace BerryBeats.Rework
                 }
                 else
                 {
-                    pool[i].transform.localPosition = position + offset;
+                    pool[i].transform.localPosition = position * scale - offset;
                     pool[i].SetActive(true);
                     pool[i].GetComponent<Note>().Reposition();
                     noteIndex++;

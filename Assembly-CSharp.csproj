@@ -67,6 +67,7 @@
     <Compile Include="Assets\HealthBar\health.cs" />
     <Compile Include="Assets\Scripts\EditorUI.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTSeq.cs" />
+    <Compile Include="Assets\Scripts\Rework\ResultScreen.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
@@ -84,14 +85,13 @@
     <Compile Include="Assets\Scripts\Rework\GameManager2.cs" />
     <Compile Include="Assets\Scripts\Rework\MissDetector.cs" />
     <Compile Include="Assets\Scripts\Animation\Dancer.cs" />
+    <Compile Include="Assets\Scripts\Rework\HitTypes.cs" />
     <Compile Include="Assets\Scripts\effectObject.cs" />
     <Compile Include="Assets\Scripts\Composer\CameraController.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
     <Compile Include="Assets\Scripts\Animation\CustomAnimator.cs" />
     <Compile Include="Assets\Scripts\NoteArranger.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
-    <Compile Include="Assets\Scripts\Rework\HitTypes.cs" />
-    <Compile Include="Assets\Scripts\Rework\ResultScreen.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
