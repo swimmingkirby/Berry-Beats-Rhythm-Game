@@ -8,22 +8,31 @@ namespace BerryBeats.Rework
         #region Components
         [Header("Components")]
         [SerializeField] private AudioSource musicSource;
-        [SerializeField] private GameObject resultScreen;
+        [SerializeField] private ResultScreen resultScreen;
         [SerializeField] private BeatScroller beatScroller;
+        [SerializeField] private LevelLoader levelLoader;
+
+        [Header("Effects")]
+        [SerializeField] private ParticleSystem hitEffect;
+        [SerializeField] private ParticleSystem goodEffect;
+        [SerializeField] private ParticleSystem perfectEffect;
+        [SerializeField] private ParticleSystem missEffect;
+
+        [Header("Health Bars")]
+        [SerializeField] PlayerHealthbar player_healthbar;
+        [SerializeField] float health_modifier = 0.05f;
         #endregion
 
         #region Public Variables
         #endregion
 
         #region Properties
-        public int currentScore { get; private set; }
-        public int comboCounter { get; private set; }
-
-        public bool isPlaying { get; private set; }
+        public bool isPlaying = false;
         #endregion
 
         #region Private Variables
-        private int currentMultiplier;
+        [SerializeField] private Stats currentStats;
+        private int levelSize = 0;
 
         #endregion
 
@@ -52,31 +61,96 @@ namespace BerryBeats.Rework
 
         private void Start()
         {
-            currentScore = 0;
-            comboCounter = 0;
+            isPlaying = false;
+            resultScreen.gameObject.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if (!isPlaying)
+            {
+                if (Input.anyKeyDown)
+                {
+                    isPlaying = true;
+                    beatScroller.hasStarted = true;
+                    levelSize = levelLoader.LevelSize();
+                    musicSource.Play();
+                }
+            }
+            else
+            {
+
+                if ((currentStats.totalHits) >= levelSize)
+                {
+                    CreateEndCard();
+                }
+            }
+
+        }
+
+        private void CreateEndCard()
+        {
+            resultScreen.SetScore(currentStats.score);
+            resultScreen.SetNormal(currentStats.normalHits);
+            resultScreen.SetGood(currentStats.goodHits);
+            resultScreen.SetPerfect(currentStats.perfectHits);
+            resultScreen.SetMissed(currentStats.missedHits);
+            resultScreen.SetPercent(1f - ((float)currentStats.missedHits /(float)levelSize));
+
+            resultScreen.gameObject.SetActive(true);
         }
         #endregion
 
         #region public methods
-        public void NoteHit()
+        public void NoteHit(HitTypes hitType)
         {
-            currentScore += 1;
-            comboCounter += 1;
+            switch (hitType)
+            {
+                case HitTypes.REGULAR:
+                    currentStats.score += SCORE_PER_NOTE * currentStats.multiplier;
+                    currentStats.normalHits += 1;
+                    hitEffect.Play();
+                    break;
+                case HitTypes.GOOD:
+                    currentStats.score += SCORE_PER_GOOD_NOTE * currentStats.multiplier;
+                    currentStats.goodHits += 1;
+                    goodEffect.Play();
+                    break;
+                case HitTypes.PERFECT:
+                    currentStats.score += SCORE_PER_PERFECT_NOTE * currentStats.multiplier;
+                    currentStats.perfectHits += 1;
+                    perfectEffect.Play();
+                    break;
+            }
+            currentStats.totalHits += 1;
         }
 
-        public void NoteMissed()
+        public void NoteMissed(bool delete = false)
         {
-            comboCounter = 0;
+            currentStats.comboCounter = 0;
+            currentStats.multiplier = 1;
+            currentStats.missedHits += 1;
+
+            missEffect.Play();
+            if (delete)
+                currentStats.totalHits += 1;             //TODO: To Calculate Level End
+                                                            //TODO: Replace with a collider of some sort
+
+            player_healthbar.ModifyHealth(-health_modifier);
         }
         #endregion
 
-        //! Debug
-        private void OnGUI()
+        [System.Serializable]
+        public class Stats
         {
-            GUI.Box(
-                new Rect(0,0, 500, 30),
-                "Score: " + currentScore + " Combo: " + comboCounter);
+            public int score;
+            public int comboCounter;
+            public int multiplier = 1;
+            public int normalHits;
+            public int goodHits;
+            public int perfectHits;
+            public int missedHits;
+            public int totalHits;
         }
-
     }
 }

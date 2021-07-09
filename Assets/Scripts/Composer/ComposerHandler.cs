@@ -193,7 +193,7 @@ namespace BerryBeats.Composer
             foreach (ArrayPosition pos in _layout)
             {
                 Note note = Instantiate(arrowPrefab, noteHolder).GetComponent<Note>();
-                note.transform.position = new Vector3(pos.x, pos.y, 0);
+                note.transform.localPosition = new Vector3(pos.x, pos.y, 0);
                 note.Reposition();
                 notes.Add(note);
             }

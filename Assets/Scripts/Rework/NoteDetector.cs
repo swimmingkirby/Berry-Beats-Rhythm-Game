@@ -66,50 +66,36 @@ namespace BerryBeats.Rework
                     EarlyMiss();
                 }
 
-               // spriteRenderer.sprite = pressedImage;
+               spriteRenderer.sprite = pressedImage;
             }
-          /*  if (Input.GetKeyUp(keyToPress))
+
+            if (Input.GetKeyUp(keyToPress))
             {
                 spriteRenderer.sprite = defaultImage;
             }
-          */
         }
 
         private void NoteHit(Note note)
         {
-            //GameManager2.Instance.NoteHit();
-            levelLoader.DestroyNote(note.gameObject);
-
-            if (Mathf.Abs(transform.position.y) > 0.25)
+            if (Mathf.Abs(note.transform.position.y - transform.position.y) > 0.25f)
             {
-                GameManager.instance.Hit(HitTypes.Regular);
-                //Instantiate(hitEffect, hitEffect.transform.position, hitEffect.transform.rotation);
-
-                Debug.Log("Hit!");
+                GameManager2.Instance.NoteHit(HitTypes.REGULAR);
             }
-            else if ((Mathf.Abs(transform.position.y) > 0.05f))
+            else if ((Mathf.Abs(note.transform.position.y - transform.position.y) > 0.1f))
             {
-                GameManager.instance.Hit(HitTypes.Good);
-                //Instantiate(goodEffect, goodEffect.transform.position, goodEffect.transform.rotation);
-
-                Debug.Log("Good!");
+                GameManager2.Instance.NoteHit(HitTypes.GOOD);
             }
             else
             {
-                GameManager.instance.Hit(HitTypes.Perfect);
-                //Instantiate(perfectEffect, perfectEffect.transform.position, perfectEffect.transform.rotation);
-
-                Debug.Log("Perfect!");
+                GameManager2.Instance.NoteHit(HitTypes.PERFECT);
             }
 
+            levelLoader.DestroyNote(note.gameObject);
         }
 
         private void EarlyMiss()
         {
-            //GameManager2.Instance.NoteMissed();
-            Debug.Log("Early Miss!");
-            GameManager.instance.NoteMissed();
-            //Instantiate(missEffect, missEffect.transform.position, missEffect.transform.rotation);
+            GameManager2.Instance.NoteMissed();
         }
         #endregion
     }

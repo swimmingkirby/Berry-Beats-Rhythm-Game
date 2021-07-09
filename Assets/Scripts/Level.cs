@@ -13,7 +13,7 @@ namespace BerryBeats.Rework
 
             for(int i = 0; i< notes.Length; i++)
             {
-                LevelArray[i] = new ArrayPosition(notes[i].transform.position.x, notes[i].transform.position.y);
+                LevelArray[i] = new ArrayPosition(notes[i].transform.localPosition.x, notes[i].transform.localPosition.y);
             }
         }
     }

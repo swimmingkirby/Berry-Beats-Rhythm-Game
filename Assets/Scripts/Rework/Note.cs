@@ -6,10 +6,10 @@ namespace BerryBeats.Rework
     {
         [Header("Components")]
         private SpriteRenderer spriteRenderer;
-
-        [Header("Properties")]
         [SerializeField] private Sprite downSprite;
         [SerializeField] private Sprite upSprite, leftSprite, rightSprite;
+
+        [SerializeField] private float scaleX = 1;
 
         private void Awake()
         {
@@ -23,18 +23,18 @@ namespace BerryBeats.Rework
 
         public void Reposition()
         {
-            switch (transform.localPosition.x)
+            switch (transform.localPosition.x / scaleX)
             {
-                case -1f:
+                case -1.5f:
                     spriteRenderer.sprite = leftSprite;
                     break;
-                case -0f:
+                case -.5f:
                     spriteRenderer.sprite = upSprite;
                     break;
-                case 1f:
+                case .5f:
                     spriteRenderer.sprite = downSprite;
                     break;
-                case 2f:
+                case 1.5f:
                     spriteRenderer.sprite = rightSprite;
                     break;
             }

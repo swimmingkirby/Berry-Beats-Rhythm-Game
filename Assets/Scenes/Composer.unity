@@ -1211,8 +1211,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1663626859}
-  - component: {fileID: 1663626858}
-  - component: {fileID: 1663626860}
   - component: {fileID: 1663626861}
   m_Layer: 0
   m_Name: GameManager
@@ -1221,41 +1219,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1663626858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663626857}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 149bc36cba7d42b42be445d54ca85e9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSource: {fileID: 515992357}
-  startPlaying: 0
-  beatScroller: {fileID: 0}
-  currentScore: 0
-  scorePerNote: 100
-  scorePerGoodNote: 125
-  scorePerPerfectNote: 200
-  currentMultiplier: 1
-  multiplierTracker: 0
-  multiplierThreshholds: 040000000600000010000000
-  recordedCombos: 
-  scoreText: {fileID: 0}
-  multiText: {fileID: 0}
-  comboText: {fileID: 0}
-  percentHitText: {fileID: 0}
-  normalsText: {fileID: 0}
-  goodsText: {fileID: 0}
-  perfectsText: {fileID: 0}
-  missesText: {fileID: 0}
-  rankText: {fileID: 0}
-  finalScoreText: {fileID: 0}
-  finalComboText: {fileID: 0}
-  resultsScreen: {fileID: 0}
 --- !u!4 &1663626859
 Transform:
   m_ObjectHideFlags: 0
@@ -1270,21 +1233,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1663626860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663626857}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5520e30c03535448afb692d5abd7b6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSource: {fileID: 515992357}
-  resultScreen: {fileID: 0}
-  beatScroller: {fileID: 0}
 --- !u!114 &1663626861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1574,7 +1522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079427350}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

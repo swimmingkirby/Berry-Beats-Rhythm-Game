@@ -102,6 +102,7 @@ MonoBehaviour:
   upSprite: {fileID: -1033766676993296678, guid: da9b821d621eafd4582b422102726e07, type: 3}
   leftSprite: {fileID: 2319643638384702094, guid: da9b821d621eafd4582b422102726e07, type: 3}
   rightSprite: {fileID: 5287939958834139383, guid: da9b821d621eafd4582b422102726e07, type: 3}
+  scaleX: 1
 --- !u!50 &8363238271538557347
 Rigidbody2D:
   serializedVersion: 4

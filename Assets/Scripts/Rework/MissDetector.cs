@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BerryBeats.Rework
@@ -13,11 +11,9 @@ namespace BerryBeats.Rework
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("Miss!");
             if (other.CompareTag("Note"))
             {
-                //GameManager2.Instance.NoteMissed();
-                GameManager.instance.NoteMissed();
+                GameManager2.Instance.NoteMissed(true);
                 levelLoader.DestroyNote(other.gameObject);
             }            
         }

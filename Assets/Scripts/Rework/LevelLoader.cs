@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -45,15 +44,15 @@ namespace BerryBeats.Rework
         {
             note.SetActive(false);
 
-            if(noteIndex < coords.Length - 1)
+            if(noteIndex < coords.Length)
             {
-                note.transform.position = coords[noteIndex] + (Vector2)transform.position + offset;
+                note.transform.localPosition = coords[noteIndex] + offset;
                 note.SetActive(true);
                 noteIndex++;
             }
         }
 
-        public void CreateNote(Vector2 position)
+        private void CreateNote(Vector2 position)
         {
             for (int i = 0; i < poolSize; i++)
             {
@@ -63,7 +62,7 @@ namespace BerryBeats.Rework
                 }
                 else
                 {
-                    pool[i].transform.position = position + (Vector2)transform.position + offset;
+                    pool[i].transform.localPosition = position + offset;
                     pool[i].SetActive(true);
                     pool[i].GetComponent<Note>().Reposition();
                     noteIndex++;
@@ -72,6 +71,16 @@ namespace BerryBeats.Rework
             }
         }
         #endregion
+
+        public int LevelSize()
+        {
+            if(coords != null)
+                return coords.Length;
+            else
+            {
+                return 0;
+            }
+        }
 
         #region Private Methods
         private void initialize()
