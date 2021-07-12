@@ -53,11 +53,11 @@ namespace BerryBeats.ScriptableObjects
                     if (Input.GetKey(KeyCode.RightArrow))
                     {
                         return FramesLeftRight;
-                    } 
+                    }
                     else if (Input.GetKey(KeyCode.UpArrow))
                     {
                         return FramesUpLeft;
-                    } 
+                    }
                     else if (Input.GetKey(KeyCode.DownArrow))
                     {
                         return FramesDownLeft;

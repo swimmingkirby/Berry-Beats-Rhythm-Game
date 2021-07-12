@@ -39,62 +39,62 @@ namespace BerryBeats.BattleSystem
             timeLeft += Time.deltaTime;
             if (Input.GetKeyDown(up))
             {
-                
+
                 Hit(ArrowDirection.Up);
-                timeLeft = 0.0f;
+
             }
             if (Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.Down);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(right))
             {
                 Hit(ArrowDirection.Right);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(left))
             {
                 Hit(ArrowDirection.Left);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(left) && Input.GetKeyDown(up))
             {
                 Hit(ArrowDirection.UpLeft);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(left) && Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.DownLeft);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(right) && Input.GetKeyDown(up))
             {
                 Hit(ArrowDirection.UpRight);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(right) && Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.DownRight);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(up) && Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.UpDown);
-                timeLeft = 0.0f;
+
 
             }
             if (Input.GetKeyDown(left) && Input.GetKeyDown(right))
             {
                 Hit(ArrowDirection.LeftRight);
-                timeLeft = 0.0f;
+
 
             }
 
@@ -102,9 +102,9 @@ namespace BerryBeats.BattleSystem
             {
                 animator.SetFrames(dancer.FramesIdle);
                 timeLeft = 0.0f;
-                
+
             }
-               
+
         }
 
         /// <summary>
@@ -113,6 +113,7 @@ namespace BerryBeats.BattleSystem
         /// <param name="dir"></param>
         public void Hit(ArrowDirection dir)
         {
+            timeLeft = 0.0f;
             animator.SetFrames(dancer.GetFrames(dir));
         }
     }
