@@ -1,6 +1,5 @@
 using BerryBeats.ScriptableObjects;
 using UnityEngine;
-using static InputManager;
 
 namespace BerryBeats.BattleSystem
 {
@@ -24,6 +23,7 @@ namespace BerryBeats.BattleSystem
     public class Dancer : MonoBehaviour
     {
         public float timeLeft = 0.0f;
+        [SerializeField] private KeyCode left, right, up, down;
 
         [SerializeField] private DancerObject dancer;
         private CustomAnimator animator;
@@ -34,35 +34,77 @@ namespace BerryBeats.BattleSystem
             animator.SetFrames(dancer.FramesIdle);
         }
 
-        private static ArrowDirection GetDir((BtnPhase l, BtnPhase r, BtnPhase u, BtnPhase d) btns)
-        {
-            (var l, var r, var u, var d) = btns;
-            if (l != BtnPhase.None && d != BtnPhase.None) return ArrowDirection.DownLeft;
-            if (l != BtnPhase.None && u != BtnPhase.None) return ArrowDirection.UpLeft;
-            if (r != BtnPhase.None && d != BtnPhase.None) return ArrowDirection.DownRight;
-            if (r != BtnPhase.None && u != BtnPhase.None) return ArrowDirection.UpRight;
-            if (l != BtnPhase.None) return ArrowDirection.Left;
-            if (r != BtnPhase.None) return ArrowDirection.Right;
-            if (u != BtnPhase.None) return ArrowDirection.Up;
-            if (d != BtnPhase.None) return ArrowDirection.Down;
-            return ArrowDirection.Idle;
-        }
-
         public void Update()
         {
             timeLeft += Time.deltaTime;
+            if (Input.GetKeyDown(up))
+            {
+                
+                Hit(ArrowDirection.Up);
+                timeLeft = 0.0f;
+            }
+            if (Input.GetKeyDown(down))
+            {
+                Hit(ArrowDirection.Down);
+                timeLeft = 0.0f;
 
-            (var l, var r, var u, var d) = GetInput();
-            if (l == BtnPhase.Down || r == BtnPhase.Down || u == BtnPhase.Down || d == BtnPhase.Down)
-                Hit(GetDir((l, r, u, d)));
+            }
+            if (Input.GetKeyDown(right))
+            {
+                Hit(ArrowDirection.Right);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(left))
+            {
+                Hit(ArrowDirection.Left);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(left) && Input.GetKeyDown(up))
+            {
+                Hit(ArrowDirection.UpLeft);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(left) && Input.GetKeyDown(down))
+            {
+                Hit(ArrowDirection.DownLeft);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(right) && Input.GetKeyDown(up))
+            {
+                Hit(ArrowDirection.UpRight);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(right) && Input.GetKeyDown(down))
+            {
+                Hit(ArrowDirection.DownRight);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(up) && Input.GetKeyDown(down))
+            {
+                Hit(ArrowDirection.UpDown);
+                timeLeft = 0.0f;
+
+            }
+            if (Input.GetKeyDown(left) && Input.GetKeyDown(right))
+            {
+                Hit(ArrowDirection.LeftRight);
+                timeLeft = 0.0f;
+
+            }
 
             if (timeLeft > 1f)
             {
                 animator.SetFrames(dancer.FramesIdle);
                 timeLeft = 0.0f;
-
+                
             }
-
+               
         }
 
         /// <summary>

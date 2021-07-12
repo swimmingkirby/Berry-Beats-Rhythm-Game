@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{668104AF-335F-20C3-5BA9-E1E3390FB60C}</ProjectGuid>
+    <ProjectGuid>{CDE45AD0-776B-0F39-F3A6-EA590FBA94DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -92,7 +92,6 @@
     <Compile Include="Assets\Scripts\Animation\CustomAnimator.cs" />
     <Compile Include="Assets\Scripts\NoteArranger.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
-    <Compile Include="Assets\Scripts\InputManager.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
