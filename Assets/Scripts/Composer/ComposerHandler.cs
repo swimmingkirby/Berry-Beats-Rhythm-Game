@@ -12,14 +12,14 @@ namespace BerryBeats.Composer
         [Header("Component")]
         [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private Transform cameraHolder;
-        [SerializeField] private Transform noteHolder;
+        [SerializeField] private Transform noteHolder, noteHolder_R;
         [SerializeField] private InputField fileName;
 
         //! Cache
         private RaycastHit2D hit;
         private Note selectedArrow;
         private int selectedIndex;
-        private List<Note> notes;
+        private List<Note> notes; // deprecated
         BinaryFormatter formatter;
         private float scale;
 
@@ -34,8 +34,8 @@ namespace BerryBeats.Composer
             notes = new List<Note>();
             scale = arrowPrefab.GetComponent<Note>().ScaleX();
             cameraHolder.localScale = new Vector3(scale, 1, 1);
-            cameraHolder.localPosition = new Vector3(scale/2, 0, cameraHolder.localPosition.z);
-            noteHolder.localScale = new Vector3(scale, 1, 1);
+            cameraHolder.localPosition = new Vector3(scale / 2, 0, cameraHolder.localPosition.z);
+            noteHolder.localScale = noteHolder_R.localScale = new Vector3(scale, 1, 1);
         }
 
         #region Unity Methods
@@ -67,12 +67,15 @@ namespace BerryBeats.Composer
 
             if (!hit || !hit.collider.CompareTag(BG_TAG))
                 return;
+
             Transform t = Instantiate(arrowPrefab, noteHolder).transform;
-            t.localScale = new Vector3(1f / scale, 1f/scale, 1);
+            t.localScale = new Vector3(1f / scale, 1f / scale, 1);
             t.position = new Vector2(hit.point.x, hit.point.y);
             Note note = t.GetComponent<Note>();
             Reposition(note);
             notes.Add(note);
+            if (hit.collider.transform.position.x > 2f)
+                t.SetParent(noteHolder_R);
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, scale * .4f);
             foreach (Collider2D c in colliders)
@@ -128,9 +131,9 @@ namespace BerryBeats.Composer
         }
         #endregion
 
-        public void LoadLevel()
+        public void LoadLevel(bool right = false)
         {
-            if(fileName.text.Equals(""))
+            if (fileName.text.Equals(""))
             {
                 Debug.LogError("File Name Cannot be Empty");
                 return;
@@ -145,13 +148,13 @@ namespace BerryBeats.Composer
 
                     Level level = formatter.Deserialize(fs) as Level;
                     fs.Close();
-                    performLoad(level.LevelArray);
+                    performLoad(level.LevelArray, right);
                     Debug.Log("Level Loaded Successfully");
                 }
                 else
                 {
                     Debug.Log("File Not Found");
-                    performLoad(new ArrayPosition[0]);
+                    performLoad(new ArrayPosition[0], right);
                 }
             }
             catch (System.Exception e)
@@ -160,7 +163,7 @@ namespace BerryBeats.Composer
             }
         }
 
-        public void SaveLevel()
+        public void SaveLevel(bool right = false)
         {
             if (fileName.text.Equals(""))
             {
@@ -175,7 +178,12 @@ namespace BerryBeats.Composer
 
                 FileStream fs = new FileStream(currentPath, FileMode.Create);
 
-                Level level = new Level(notes.ToArray());
+                var nh = right ? noteHolder_R : noteHolder;
+                Level level = new Level(nh.GetComponentsInChildren<Note>());
+                if (right)
+                    for (int i = 0; i < level.LevelArray.Length; ++i)
+                        level.LevelArray[i].x -= 4f;
+                // Get Notes from the scene. notes no longer needed.
                 formatter.Serialize(fs, level);
                 Debug.Log("Level Saved Successfully");
                 fs.Close();
@@ -187,17 +195,22 @@ namespace BerryBeats.Composer
 
         }
 
-        private void performLoad(ArrayPosition[] _layout)
+        private void performLoad(ArrayPosition[] _layout, bool right = false)
         {
-            foreach(Transform child in noteHolder)
+            var nh = right ? noteHolder_R : noteHolder;
+            foreach (Transform child in nh)
             {
                 Destroy(child.gameObject);
             }
             notes = new List<Note>();
 
+            if (right)
+                for (int i = 0; i < _layout.Length; ++i)
+                    _layout[i].x += 4f;
+
             foreach (ArrayPosition pos in _layout)
             {
-                Note note = Instantiate(arrowPrefab, noteHolder).GetComponent<Note>();
+                Note note = Instantiate(arrowPrefab, nh).GetComponent<Note>();
                 note.transform.localPosition = new Vector3(pos.x, pos.y, 0);
                 note.transform.localScale = new Vector3(1 / scale, 1 / scale, 1);
                 note.Reposition2();

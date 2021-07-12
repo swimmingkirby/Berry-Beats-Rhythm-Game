@@ -25,10 +25,11 @@ namespace BerryBeats.Rework
         {
 
             Sprite _sprite;
-            if(transform.localPosition.x / scaleX < -1.1f)
+            if (transform.localPosition.x / scaleX < -1.1f)
             {
                 _sprite = leftSprite;
-            }else if (transform.localPosition.x / scaleX < 0f)
+            }
+            else if (transform.localPosition.x / scaleX < 0f)
             {
                 _sprite = downSprite;
             }
@@ -46,21 +47,21 @@ namespace BerryBeats.Rework
 
         public void Reposition2()
         {
-
             Sprite _sprite;
 
-            switch (transform.localPosition.x)
+            int pos = (Mathf.RoundToInt(transform.localPosition.x) + 4) % 4;
+            switch (pos)
             {
-                case -1f:
+                case 3:
                     _sprite = leftSprite;
                     break;
-                case 0f:
+                case 0:
                     _sprite = downSprite;
                     break;
-                case 1f:
+                case 1:
                     _sprite = upSprite;
                     break;
-                case 2f:
+                case 2:
                     _sprite = rightSprite;
                     break;
                 default:
