@@ -30,11 +30,11 @@ namespace BerryBeats.Rework
                 _sprite = leftSprite;
             }else if (transform.localPosition.x / scaleX < 0f)
             {
-                _sprite = upSprite;
+                _sprite = downSprite;
             }
             else if (transform.localPosition.x / scaleX < 1.1f)
             {
-                _sprite = downSprite;
+                _sprite = upSprite;
             }
             else
             {
@@ -55,10 +55,10 @@ namespace BerryBeats.Rework
                     _sprite = leftSprite;
                     break;
                 case 0f:
-                    _sprite = upSprite;
+                    _sprite = downSprite;
                     break;
                 case 1f:
-                    _sprite = downSprite;
+                    _sprite = upSprite;
                     break;
                 case 2f:
                     _sprite = rightSprite;

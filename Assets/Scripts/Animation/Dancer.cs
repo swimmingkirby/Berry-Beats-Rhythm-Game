@@ -23,6 +23,7 @@ namespace BerryBeats.BattleSystem
     public class Dancer : MonoBehaviour
     {
         public float timeLeft = 0.0f;
+        [SerializeField] private KeyCode left, right, up, down;
 
         [SerializeField] private DancerObject dancer;
         private CustomAnimator animator;
@@ -36,61 +37,61 @@ namespace BerryBeats.BattleSystem
         public void Update()
         {
             timeLeft += Time.deltaTime;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(up))
             {
                 
                 Hit(ArrowDirection.Up);
                 timeLeft = 0.0f;
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.Down);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(right))
             {
                 Hit(ArrowDirection.Right);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(left))
             {
                 Hit(ArrowDirection.Left);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(left) && Input.GetKeyDown(up))
             {
                 Hit(ArrowDirection.UpLeft);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(left) && Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.DownLeft);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(right) && Input.GetKeyDown(up))
             {
                 Hit(ArrowDirection.UpRight);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(right) && Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.DownRight);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.DownArrow))
+            if (Input.GetKeyDown(up) && Input.GetKeyDown(down))
             {
                 Hit(ArrowDirection.UpDown);
                 timeLeft = 0.0f;
 
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(left) && Input.GetKeyDown(right))
             {
                 Hit(ArrowDirection.LeftRight);
                 timeLeft = 0.0f;

@@ -18,8 +18,7 @@ namespace BerryBeats.Rework
         [SerializeField] private Sprite pressedImage;
 
         [SerializeField] private KeyCode keyToPress;
-
-        //[SerializeField] private GameObject hitEffect, goodEffect, perfectEffect, missEffect;
+        [SerializeField] private bool player1 = true;
 
         private Note focusedNote;
         #endregion
@@ -79,15 +78,15 @@ namespace BerryBeats.Rework
         {
             if (Mathf.Abs(note.transform.position.y - transform.position.y) > 0.25f)
             {
-                GameManager2.Instance.NoteHit(HitTypes.REGULAR);
+                GameManager2.Instance.NoteHit(HitTypes.REGULAR, player1);
             }
             else if ((Mathf.Abs(note.transform.position.y - transform.position.y) > 0.1f))
             {
-                GameManager2.Instance.NoteHit(HitTypes.GOOD);
+                GameManager2.Instance.NoteHit(HitTypes.GOOD, player1);
             }
             else
             {
-                GameManager2.Instance.NoteHit(HitTypes.PERFECT);
+                GameManager2.Instance.NoteHit(HitTypes.PERFECT, player1);
             }
 
             levelLoader.DestroyNote(note.gameObject);
@@ -95,7 +94,7 @@ namespace BerryBeats.Rework
 
         private void EarlyMiss()
         {
-            GameManager2.Instance.NoteMissed();
+            GameManager2.Instance.NoteMissed(player1);
         }
         #endregion
     }

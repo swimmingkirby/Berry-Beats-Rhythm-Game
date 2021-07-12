@@ -10,6 +10,7 @@ namespace BerryBeats.Rework
         [SerializeField] private AudioSource musicSource;
         [SerializeField] private ResultScreen resultScreen;
         [SerializeField] private BeatScroller beatScroller;
+        [SerializeField] private BeatScroller beatScroller2;
         [SerializeField] private LevelLoader levelLoader;
 
         [Header("Effects")]
@@ -32,6 +33,7 @@ namespace BerryBeats.Rework
 
         #region Private Variables
         [SerializeField] private Stats currentStats;
+        [SerializeField] private Stats enemyStats;
         private int levelSize = 0;
 
         #endregion
@@ -73,14 +75,14 @@ namespace BerryBeats.Rework
                 {
                     isPlaying = true;
                     beatScroller.hasStarted = true;
+                    beatScroller2.hasStarted = true;
                     levelSize = levelLoader.LevelSize();
                     musicSource.Play();
                 }
             }
             else
             {
-
-                if ((currentStats.totalHits) >= levelSize)
+                if (!musicSource.isPlaying)
                 {
                     CreateEndCard();
                 }
@@ -102,41 +104,52 @@ namespace BerryBeats.Rework
         #endregion
 
         #region public methods
-        public void NoteHit(HitTypes hitType)
+        public void NoteHit(HitTypes hitType, bool player1 = true)
         {
+            Stats selectedStats = player1 ? currentStats : enemyStats;
             switch (hitType)
             {
                 case HitTypes.REGULAR:
-                    currentStats.score += SCORE_PER_NOTE * currentStats.multiplier;
-                    currentStats.normalHits += 1;
-                    hitEffect.Play();
+                    selectedStats.score += SCORE_PER_NOTE * selectedStats.multiplier;
+                    selectedStats.normalHits += 1;
+                    if (player1) hitEffect.Play();
                     break;
                 case HitTypes.GOOD:
-                    currentStats.score += SCORE_PER_GOOD_NOTE * currentStats.multiplier;
-                    currentStats.goodHits += 1;
-                    goodEffect.Play();
+                    selectedStats.score += SCORE_PER_GOOD_NOTE * selectedStats.multiplier;
+                    selectedStats.goodHits += 1;
+                    if (player1) goodEffect.Play();
                     break;
                 case HitTypes.PERFECT:
-                    currentStats.score += SCORE_PER_PERFECT_NOTE * currentStats.multiplier;
-                    currentStats.perfectHits += 1;
-                    perfectEffect.Play();
+                    selectedStats.score += SCORE_PER_PERFECT_NOTE * selectedStats.multiplier;
+                    selectedStats.perfectHits += 1;
+                    if (player1) perfectEffect.Play();
                     break;
             }
-            currentStats.totalHits += 1;
+            selectedStats.totalHits += 1;
         }
 
-        public void NoteMissed(bool delete = false)
+        public void NoteMissed(bool player1 = true, bool delete = false)
         {
-            currentStats.comboCounter = 0;
-            currentStats.multiplier = 1;
-            currentStats.missedHits += 1;
+            Stats selectedStats = player1 ? currentStats : enemyStats;
 
-            missEffect.Play();
+            selectedStats.comboCounter = 0;
+            selectedStats.multiplier = 1;
+            selectedStats.missedHits += 1;
+
+            if (player1) missEffect.Play();
             if (delete)
-                currentStats.totalHits += 1;             //TODO: To Calculate Level End
+                selectedStats.totalHits += 1;             //TODO: To Calculate Level End
                                                             //TODO: Replace with a collider of some sort
 
-            player_healthbar.ModifyHealth(-health_modifier);
+            player_healthbar.ModifyHealth(health_modifier * (player1? -1: 1));
+        }
+
+        public void PauseResume()
+        {
+            if(Time.timeScale > 0)
+                Time.timeScale = 0;
+            else
+                Time.timeScale = 1;
         }
         #endregion
 

@@ -8,12 +8,13 @@ namespace BerryBeats.Rework
     {
         [Header("Components")]
         [SerializeField]private LevelLoader levelLoader;
+        [SerializeField]private bool player1 = true;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Note"))
             {
-                GameManager2.Instance.NoteMissed(true);
+                GameManager2.Instance.NoteMissed(player1, true);
                 levelLoader.DestroyNote(other.gameObject);
             }            
         }
