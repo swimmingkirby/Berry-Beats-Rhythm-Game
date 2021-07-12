@@ -11033,7 +11033,6 @@ GameObject:
   - component: {fileID: 581211924}
   - component: {fileID: 581211923}
   - component: {fileID: 581211922}
-  - component: {fileID: 581211925}
   - component: {fileID: 581211921}
   - component: {fileID: 581211920}
   m_Layer: 0
@@ -11055,6 +11054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a16116d75a708e449e412e92d359b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLeft: 0
+  left: 97
+  right: 100
+  up: 119
+  down: 115
+  dancer: {fileID: 11400000, guid: 95a3ed0329986c74296c91ef9ff3672e, type: 2}
 --- !u!114 &581211921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11062,7 +11067,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581211919}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1211085177f822244b505c34fd3e9e86, type: 3}
   m_Name: 
@@ -11156,20 +11161,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &581211925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581211919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1dcdad396d43af4c848efe3a6390eb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeLeft: 0
-  dancer: {fileID: 11400000, guid: 552fed9b638879e45b5f4eddeb93737c, type: 2}
 --- !u!1 &589411691
 GameObject:
   m_ObjectHideFlags: 0
@@ -24047,7 +24038,7 @@ GameObject:
   - component: {fileID: 2027287259}
   - component: {fileID: 2027287258}
   - component: {fileID: 2027287261}
-  - component: {fileID: 2027287263}
+  - component: {fileID: 2027287262}
   m_Layer: 0
   m_Name: Dancer
   m_TagString: Untagged
@@ -24156,7 +24147,7 @@ MonoBehaviour:
   frames:
   - {fileID: 0}
   loop: 1
---- !u!114 &2027287263
+--- !u!114 &2027287262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24165,11 +24156,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2027287257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1dcdad396d43af4c848efe3a6390eb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a16116d75a708e449e412e92d359b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 0
-  dancer: {fileID: 11400000, guid: 552fed9b638879e45b5f4eddeb93737c, type: 2}
+  left: 276
+  right: 275
+  up: 273
+  down: 274
+  dancer: {fileID: 11400000, guid: 95a3ed0329986c74296c91ef9ff3672e, type: 2}
 --- !u!1 &2046178999
 GameObject:
   m_ObjectHideFlags: 0
