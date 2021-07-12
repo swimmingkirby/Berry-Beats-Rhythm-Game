@@ -5001,7 +5001,7 @@ GameObject:
   - component: {fileID: 42740293}
   - component: {fileID: 42740291}
   m_Layer: 0
-  m_Name: Button_Down
+  m_Name: Button_Up
   m_TagString: Activator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5048,7 +5048,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -480254276019886394, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
+  m_Sprite: {fileID: 3713549098536957005, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5067,7 +5067,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42740288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0, z: 0}
+  m_LocalPosition: {x: 0.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2125296781}
@@ -5107,9 +5107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 965856000}
-  defaultImage: {fileID: -480254276019886394, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
-  pressedImage: {fileID: -480254276019886394, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
-  keyToPress: 274
+  defaultImage: {fileID: 3713549098536957005, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
+  pressedImage: {fileID: 3713549098536957005, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
+  keyToPress: 273
   player1: 1
 --- !u!61 &42740293
 BoxCollider2D:
@@ -5449,7 +5449,7 @@ GameObject:
   - component: {fileID: 335185284}
   - component: {fileID: 335185282}
   m_Layer: 0
-  m_Name: Button_Up
+  m_Name: Button_Down
   m_TagString: Activator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5496,7 +5496,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3713549098536957005, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
+  m_Sprite: {fileID: -480254276019886394, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5515,7 +5515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335185279}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0, z: 0}
+  m_LocalPosition: {x: -0.3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2125296781}
@@ -5555,9 +5555,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 965856000}
-  defaultImage: {fileID: 3713549098536957005, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
-  pressedImage: {fileID: 3713549098536957005, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
-  keyToPress: 273
+  defaultImage: {fileID: -480254276019886394, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
+  pressedImage: {fileID: -480254276019886394, guid: 889fa6aec4dd05d4d90d82b55533a8b9, type: 3}
+  keyToPress: 274
   player1: 1
 --- !u!61 &335185284
 BoxCollider2D:
