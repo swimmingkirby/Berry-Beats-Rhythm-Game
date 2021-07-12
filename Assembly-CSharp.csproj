@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CDE45AD0-776B-0F39-F3A6-EA590FBA94DA}</ProjectGuid>
+    <ProjectGuid>{668104AF-335F-20C3-5BA9-E1E3390FB60C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -71,24 +71,25 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
+    <Compile Include="Assets\Scripts\Animation\Dancer.cs" />
     <Compile Include="Assets\Scripts\Rework\Note.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\CustomUI.cs" />
     <Compile Include="Assets\Scripts\ButtonController.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Composer\ComposerHandler.cs" />
+    <Compile Include="Assets\Scripts\InputManager.cs" />
     <Compile Include="Assets\Scripts\Animation\ArrowHighlighter.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Level.cs" />
-    <Compile Include="Assets\Scripts\DancerObject.cs" />
     <Compile Include="Assets\Scripts\Rework\PlayerHealthbar.cs" />
     <Compile Include="Assets\Scripts\Rework\GameManager2.cs" />
     <Compile Include="Assets\Scripts\Rework\MissDetector.cs" />
-    <Compile Include="Assets\Scripts\Animation\Dancer.cs" />
     <Compile Include="Assets\Scripts\Rework\HitTypes.cs" />
     <Compile Include="Assets\Scripts\effectObject.cs" />
     <Compile Include="Assets\Scripts\Composer\CameraController.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
+    <Compile Include="Assets\Scripts\DancerObject.cs" />
     <Compile Include="Assets\Scripts\Animation\CustomAnimator.cs" />
     <Compile Include="Assets\Scripts\NoteArranger.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
