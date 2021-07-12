@@ -15,14 +15,38 @@ MonoBehaviour:
   Name: 
   Description: 
   DialogAvatar: {fileID: 0}
-  FramesUp: []
-  FramesLeft: []
-  FramesRight: []
-  FramesDown: []
-  FramesIdle: []
-  FramesUpLeft: []
-  FramesDownLeft: []
-  FramesUpRight: []
-  FramesDownRight: []
-  FramesUpDown: []
-  FramesLeftRight: []
+  FramesUp:
+  - {fileID: -1111833347182033263, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: -3977351817303459148, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesLeft:
+  - {fileID: 5921428895850077237, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 2544858610715012910, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesRight:
+  - {fileID: -7187871801115880642, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 4519037597064447023, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesDown:
+  - {fileID: -7921649660051629226, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: -4806507511148071434, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesIdle:
+  - {fileID: -5479434414996797004, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 237944914328275193, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 8215184620968430707, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesUpLeft:
+  - {fileID: 1349540098282682887, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 3074976650132069846, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesDownLeft:
+  - {fileID: 2425100637020536440, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: -1131693327697047087, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesUpRight:
+  - {fileID: 5392025801776754796, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 1734101735924498420, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesDownRight:
+  - {fileID: -5016232273489403348, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: 1388190145292675228, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesUpDown:
+  - {fileID: -1111833347182033263, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: -3977351817303459148, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: -7921649660051629226, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  FramesLeftRight:
+  - {fileID: -7448892025161265840, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
+  - {fileID: -1391642464795206608, guid: 44d2d804c4b8a944799a2a06442e2aef, type: 3}
