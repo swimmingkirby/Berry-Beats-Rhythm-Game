@@ -32,74 +32,15 @@ namespace BerryBeats.ScriptableObjects
         {
             switch (dir)
             {
-                case ArrowDirection.Up:
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        return FramesUpLeft;
-                    }
-                    else if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        return FramesUpRight;
-                    }
-                    else if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        return FramesUpDown;
-                    }
-                    else
-                    {
-                        return FramesUp;
-                    }
-                case ArrowDirection.Left:
-                    if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        return FramesLeftRight;
-                    } 
-                    else if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        return FramesUpLeft;
-                    } 
-                    else if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        return FramesDownLeft;
-                    }
-                    else
-                    {
-                        return FramesLeft;
-                    }
-                case ArrowDirection.Right:
-                    if (Input.GetKey(KeyCode.DownArrow))
-                    {
-                        return FramesDownRight;
-                    }
-                    else if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        return FramesUpRight;
-                    }
-                    else if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        return FramesLeftRight;
-                    }
-                    else
-                    {
-                        return FramesRight;
-                    }
-                case ArrowDirection.Down:
-                    if (Input.GetKey(KeyCode.LeftArrow))
-                    {
-                        return FramesDownLeft;
-                    }
-                    else if (Input.GetKey(KeyCode.RightArrow))
-                    {
-                        return FramesDownRight;
-                    }
-                    else if (Input.GetKey(KeyCode.UpArrow))
-                    {
-                        return FramesUpDown;
-                    }
-                    else
-                    {
-                        return FramesDown;
-                    }
+                case ArrowDirection.Up: return FramesUp;
+                case ArrowDirection.Down: return FramesDown;
+                case ArrowDirection.Right: return FramesRight;
+                case ArrowDirection.Left: return FramesLeft;
+                case ArrowDirection.UpLeft: return FramesUpLeft;
+                case ArrowDirection.UpRight: return FramesUpRight;
+                case ArrowDirection.DownLeft: return FramesDownLeft;
+                case ArrowDirection.DownRight: return FramesDownRight;
+                case ArrowDirection.Idle: return FramesIdle;
                 default:
                     break;
             }
@@ -110,4 +51,3 @@ namespace BerryBeats.ScriptableObjects
         }
     }
 }
-
