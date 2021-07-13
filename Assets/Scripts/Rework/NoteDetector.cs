@@ -38,7 +38,7 @@ namespace BerryBeats.Rework
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if(other.CompareTag("Note"))
+            if (other.CompareTag("Note"))
                 focusedNote = other.GetComponent<Note>();
         }
 
@@ -65,7 +65,13 @@ namespace BerryBeats.Rework
                     EarlyMiss();
                 }
 
-               spriteRenderer.sprite = pressedImage;
+                spriteRenderer.sprite = pressedImage;
+            }
+
+            if (Input.GetKey(keyToPress))
+            {
+                if (focusedNote != null && focusedNote.TryGetComponent<LongNote>(out var _))
+                    NoteHitL(focusedNote);
             }
 
             if (Input.GetKeyUp(keyToPress))
@@ -89,6 +95,12 @@ namespace BerryBeats.Rework
                 GameManager2.Instance.NoteHit(HitTypes.PERFECT, player1);
             }
 
+            levelLoader.DestroyNote(note.gameObject);
+        }
+
+        private void NoteHitL(Note note)
+        {
+            GameManager2.Instance.NoteHit(HitTypes.REGULAR, player1);
             levelLoader.DestroyNote(note.gameObject);
         }
 

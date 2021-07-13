@@ -45,7 +45,7 @@ namespace BerryBeats.Rework
         {
             note.SetActive(false);
 
-            if(noteIndex < coords.Length)
+            if (noteIndex < coords.Length)
             {
                 note.transform.localPosition = coords[noteIndex] * scale - offset;
                 note.SetActive(true);
@@ -75,7 +75,7 @@ namespace BerryBeats.Rework
 
         public int LevelSize()
         {
-            if(coords != null)
+            if (coords != null)
                 return coords.Length;
             else
             {
@@ -117,7 +117,7 @@ namespace BerryBeats.Rework
 
         private void LoadLevel()
         {
-            for(int i=0; i < poolSize; i++)
+            for (int i = 0; i < poolSize; i++)
             {
                 CreateNote(coords[i]);
             }
@@ -131,7 +131,7 @@ namespace BerryBeats.Rework
             }
 
             coords = new Vector2[_layout.Length];
- 
+
             for (int i = 0; i < _layout.Length; i++)
             {
                 coords[i] = new Vector2(_layout[i].x, _layout[i].y);

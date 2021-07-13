@@ -114,7 +114,6 @@ namespace BerryBeats.BattleSystem
         public void Hit(ArrowDirection dir)
         {
             timeLeft = 0.0f;
-            Debug.Log(dir);
             animator.SetFrames(dancer.GetFrames(dir));
         }
     }

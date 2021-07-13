@@ -11,6 +11,8 @@ namespace BerryBeats.Rework
         [SerializeField] private ResultScreen resultScreen;
         [SerializeField] private BeatScroller beatScroller;
         [SerializeField] private BeatScroller beatScroller2;
+        [SerializeField] private BeatScroller longBeatScroller;
+        [SerializeField] private BeatScroller longBeatScroller2;
         [SerializeField] private LevelLoader levelLoader;
 
         [Header("Effects")]
@@ -51,7 +53,7 @@ namespace BerryBeats.Rework
         #region Unity Methods
         private void Awake()
         {
-            if(Instance != null)
+            if (Instance != null)
             {
                 Destroy(gameObject);
             }
@@ -76,6 +78,8 @@ namespace BerryBeats.Rework
                     isPlaying = true;
                     beatScroller.hasStarted = true;
                     beatScroller2.hasStarted = true;
+                    longBeatScroller.hasStarted = true;
+                    longBeatScroller2.hasStarted = true;
                     levelSize = levelLoader.LevelSize();
                     musicSource.Play();
                 }
@@ -97,7 +101,7 @@ namespace BerryBeats.Rework
             resultScreen.SetGood(currentStats.goodHits);
             resultScreen.SetPerfect(currentStats.perfectHits);
             resultScreen.SetMissed(currentStats.missedHits);
-            resultScreen.SetPercent(1f - ((float)currentStats.missedHits /(float)levelSize));
+            resultScreen.SetPercent(1f - ((float)currentStats.missedHits / (float)levelSize));
 
             resultScreen.gameObject.SetActive(true);
         }
@@ -139,14 +143,14 @@ namespace BerryBeats.Rework
             if (player1) missEffect.Play();
             if (delete)
                 selectedStats.totalHits += 1;             //TODO: To Calculate Level End
-                                                            //TODO: Replace with a collider of some sort
+                                                          //TODO: Replace with a collider of some sort
 
-            player_healthbar.ModifyHealth(health_modifier * (player1? -1: 1));
+            player_healthbar.ModifyHealth(health_modifier * (player1 ? -1 : 1));
         }
 
         public void PauseResume()
         {
-            if(Time.timeScale > 0)
+            if (Time.timeScale > 0)
                 Time.timeScale = 0;
             else
                 Time.timeScale = 1;
