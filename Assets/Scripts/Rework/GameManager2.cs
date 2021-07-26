@@ -130,6 +130,8 @@ namespace BerryBeats.Rework
                     break;
             }
             selectedStats.totalHits += 1;
+
+            player_healthbar.ModifyHealth(health_modifier * (player1 ? +1 : 1));
         }
 
         public void NoteMissed(bool player1 = true, bool delete = false)

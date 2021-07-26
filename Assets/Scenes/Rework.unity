@@ -25342,6 +25342,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 136083543}
     m_Modifications:
     - target: {fileID: 182338381579949095, guid: 3898a7684552f18428eb0060a7868c97, type: 3}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 182338381579949095, guid: 3898a7684552f18428eb0060a7868c97, type: 3}
       propertyPath: berries
       value: 
       objectReference: {fileID: 1064569578}
