@@ -1,93 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
+using DentedPixel;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelSelectorManager : MonoBehaviour
 {
+    [Header("Animation Configuration")]
+    [SerializeField] LeanTweenType transitionCurve;
+    [SerializeField] float transitionDuration = 0.3f;
 
+    [Header("Fields")]
     [SerializeField] GameObject background;
-    [SerializeField] Image level_text;
+    [SerializeField] Image levelText;
     [SerializeField] Sprite[] texts;
-    [SerializeField] RectTransform size_example;
-    [SerializeField] float transition_speed = 3000f;
 
-    int menu_indicator;
-    float image_width;
-    float standard_y_pos;
-
-    bool has_to_move = false;
-    Vector3 destination = new Vector3();
+    int currentLevel = 0;
+    int levelCount = 1;
+    Vector2 levelTextPosition;
+    RectTransform[] backgroundObjects;
 
     void Start()
     {
-        standard_y_pos = background.transform.position.y;
-        image_width = size_example.rect.width;
-        menu_indicator = 0;
+        levelTextPosition = levelText.rectTransform.anchoredPosition;
+        levelCount = background.transform.childCount;
+
+        // Fill backgroundImages array
+        backgroundObjects = new RectTransform[levelCount];
+        for (int i = 0; i < levelCount; i++)
+        {
+            backgroundObjects[i] = background.transform.GetChild(i).GetComponent<RectTransform>();
+        }
     }
 
-    
     void Update()
     {
-        if (!has_to_move)
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                ChangeMenu(1);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                ChangeMenu(-1);
-            }
+            ChangeMenu(1);
         }
-
-        if (has_to_move)
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (background.transform.position == destination)
-                has_to_move = false;
-
-            background.transform.position = Vector3.MoveTowards(background.transform.position, destination, Time.deltaTime * transition_speed);
-        }
-
-        //print(background.transform.localPosition.x);
-        if (background.transform.localPosition.x == image_width * -3 || background.transform.localPosition.x == image_width)
-        {
-            has_to_move = false;
-            if (background.transform.localPosition.x == image_width * -3)
-                background.transform.localPosition = new Vector3(0f, background.transform.localPosition.y);
-
-            if (background.transform.localPosition.x == image_width)
-                background.transform.localPosition = new Vector3(image_width * -2, background.transform.localPosition.y);
+            ChangeMenu(-1);
         }
     }
 
     public void ChangeMenu(int input)
     {
-        if (!has_to_move)
+        int _lastLevel = currentLevel;
+        currentLevel = Mathf.RoundToInt(Mathf.Repeat(currentLevel + input, levelCount));
+
+        // Cancel all other animations to prevent glitches
+        for (int i = 0; i < levelCount; i++)
         {
-            menu_indicator += input;
-
-            if (menu_indicator == -1 || menu_indicator == 3)
-            {
-                if (menu_indicator == -1)
-                    menu_indicator = 2;
-                if (menu_indicator == 3)
-                    menu_indicator = 0;
-            }
-
-            if (input == 1)
-            {
-                destination = new Vector3(background.transform.position.x - image_width,  standard_y_pos);
-            }
-            if (input == -1)
-            {
-                destination = new Vector3(background.transform.position.x + image_width, standard_y_pos);
-            }
-
-            has_to_move = true;
-            level_text.sprite = texts[menu_indicator];
+            LeanTween.cancel(backgroundObjects[i]);
         }
-        
-    }
+        LeanTween.cancel(levelText.gameObject);
 
+        // The actual animations
+        LeanTween.alpha(backgroundObjects[_lastLevel], 0.0f, transitionDuration)
+            .setEase(transitionCurve);
+        LeanTween.alpha(backgroundObjects[currentLevel], 1.0f, transitionDuration)
+            .setEase(transitionCurve);
+        LeanTween.moveX(backgroundObjects[_lastLevel], input * -200, transitionDuration)
+            .setFrom(Vector3.zero)
+            .setEase(transitionCurve);
+        LeanTween.moveX(backgroundObjects[currentLevel], 0, transitionDuration)
+            .setFrom(200 * input * Vector3.right)
+            .setEase(transitionCurve);
+
+        LeanTween.moveLocalY(levelText.gameObject, levelTextPosition.y + 100, transitionDuration * 0.1f)
+            .setEaseOutQuint()
+            .setOnComplete(() => LeanTween.moveLocalY(levelText.gameObject, levelTextPosition.y, transitionDuration - 0.1f)
+                .setEaseOutCirc());
+
+        levelText.sprite = texts[currentLevel];
+    }
 }
