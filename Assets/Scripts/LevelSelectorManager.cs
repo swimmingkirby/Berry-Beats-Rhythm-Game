@@ -13,6 +13,10 @@ public class LevelSelectorManager : MonoBehaviour
     [SerializeField] Image levelText;
     [SerializeField] Sprite[] texts;
 
+    [Header("Music")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] songs;
+
     int currentLevel = 0;
     int levelCount = 1;
     Vector2 levelTextPosition;
@@ -73,5 +77,7 @@ public class LevelSelectorManager : MonoBehaviour
                 .setEaseOutCirc());
 
         levelText.sprite = texts[currentLevel];
+        audioSource.clip = songs[currentLevel];
+        audioSource.Play();
     }
 }
