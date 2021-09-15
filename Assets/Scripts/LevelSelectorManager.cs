@@ -1,5 +1,6 @@
 using DentedPixel;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 
 public class LevelSelectorManager : MonoBehaviour
@@ -7,6 +8,10 @@ public class LevelSelectorManager : MonoBehaviour
     [Header("Animation Configuration")]
     [SerializeField] LeanTweenType transitionCurve;
     [SerializeField] float transitionDuration = 0.3f;
+
+    [Header("Pole")]
+    [SerializeField] GameObject polePrefab;
+    [SerializeField] Transform poleStartPos;
 
     [Header("Fields")]
     [SerializeField] GameObject background;
@@ -52,13 +57,14 @@ public class LevelSelectorManager : MonoBehaviour
 
     public void ChangeMenu(int input)
     {
-        if((input == 1 && levelIndex < 2) || (input == -1 && levelIndex > 0))
+        if ((input == 1 && levelIndex < 2) || (input == -1 && levelIndex > 0))
         {
             if (input == 1)
                 levelIndex++;
             else
                 levelIndex--;
 
+            StartCoroutine(PoleCoroutine());
 
             int _lastLevel = currentLevel;
             currentLevel = Mathf.RoundToInt(Mathf.Repeat(currentLevel + input, levelCount));
@@ -92,6 +98,13 @@ public class LevelSelectorManager : MonoBehaviour
             audioSource.clip = songs[levelIndex];
             audioSource.Play();
         }
-        
     }
+
+    private IEnumerator PoleCoroutine()
+    {
+        GameObject pole = Instantiate(polePrefab);
+        yield return new WaitForSeconds(2f);
+        Destroy(pole);
+    }
+
 }

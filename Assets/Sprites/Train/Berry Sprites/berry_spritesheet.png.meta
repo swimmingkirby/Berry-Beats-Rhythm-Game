@@ -1,0 +1,708 @@
+fileFormatVersion: 2
+guid: 21a587ed6f7e5184c840035bb526a28a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3858482764045297126
+    second: berry_spritesheet_0
+  - first:
+      213: -207536851712832908
+    second: berry_spritesheet_1
+  - first:
+      213: -6522972709262148468
+    second: berry_spritesheet_2
+  - first:
+      213: 6580804255495679190
+    second: berry_spritesheet_3
+  - first:
+      213: -5839489502112401476
+    second: berry_spritesheet_4
+  - first:
+      213: 7654089848180056508
+    second: berry_spritesheet_5
+  - first:
+      213: -1865243854530503513
+    second: berry_spritesheet_6
+  - first:
+      213: -8244008751483177836
+    second: berry_spritesheet_7
+  - first:
+      213: 6195724529182499321
+    second: berry_spritesheet_8
+  - first:
+      213: 3454382629916281743
+    second: berry_spritesheet_9
+  - first:
+      213: 2367551056379097892
+    second: berry_spritesheet_10
+  - first:
+      213: -5153030350636894759
+    second: berry_spritesheet_11
+  - first:
+      213: 744876772380816139
+    second: berry_spritesheet_12
+  - first:
+      213: 7949653469453341204
+    second: berry_spritesheet_13
+  - first:
+      213: 6225724189358061875
+    second: berry_spritesheet_14
+  - first:
+      213: 451820517799863085
+    second: berry_spritesheet_15
+  - first:
+      213: -1025685195273331986
+    second: berry_spritesheet_16
+  - first:
+      213: 5806241661110849972
+    second: berry_spritesheet_17
+  - first:
+      213: 8251337053545583318
+    second: berry_spritesheet_18
+  - first:
+      213: 6632775734766775307
+    second: berry_spritesheet_19
+  - first:
+      213: 8174319530875207605
+    second: berry_spritesheet_20
+  - first:
+      213: 2236082871485713505
+    second: berry_spritesheet_21
+  - first:
+      213: -3604542523691639603
+    second: berry_spritesheet_22
+  - first:
+      213: 8373331258788822401
+    second: berry_spritesheet_23
+  - first:
+      213: 5746960427293659743
+    second: berry_spritesheet_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: berry_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1adc158e5ae37ac0800000000000000
+      internalID: -3858482764045297126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a8adb355eae1df0800000000000000
+      internalID: -207536851712832908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8cbcd091eeb975a0800000000000000
+      internalID: -6522972709262148468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dce2319a96b35b50800000000000000
+      internalID: 6580804255495679190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb7b7fc9c37f5fea0800000000000000
+      internalID: -5839489502112401476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb122bfe92ac83a60800000000000000
+      internalID: 7654089848180056508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac9a37c8925d16e0800000000000000
+      internalID: -1865243854530503513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49432aa18b5679d80800000000000000
+      internalID: -8244008751483177836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1e81802a2abf550800000000000000
+      internalID: 6195724529182499321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 150
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b807623be60ff20800000000000000
+      internalID: 3454382629916281743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423b317542b3bd020800000000000000
+      internalID: 2367551056379097892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d53b71b232cc78b0800000000000000
+      internalID: -5153030350636894759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b03b23b5a75565a00800000000000000
+      internalID: 744876772380816139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412d73e16b7d25e60800000000000000
+      internalID: 7949653469453341204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3397e383a27366650800000000000000
+      internalID: 6225724189358061875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23a1b9fd50354600800000000000000
+      internalID: 451820517799863085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea1b5ccfb804c1f0800000000000000
+      internalID: -1025685195273331986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b1169a270ae39050800000000000000
+      internalID: 5806241661110849972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d25a9e2553a28270800000000000000
+      internalID: 8251337053545583318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 75
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0caa99836a5c0c50800000000000000
+      internalID: 6632775734766775307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bfba5ecd44017170800000000000000
+      internalID: 8174319530875207605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 0
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16ccd3b3689280f10800000000000000
+      internalID: 2236082871485713505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccd1912ca71afdc0800000000000000
+      internalID: -3604542523691639603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18d38c28a6c043470800000000000000
+      internalID: 8373331258788822401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: berry_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52d0175f0e41cf40800000000000000
+      internalID: 5746960427293659743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
