@@ -254,7 +254,7 @@ RectTransform:
   - {fileID: 1359845770}
   - {fileID: 1285626877}
   - {fileID: 894169702}
-  - {fileID: 197678504}
+  - {fileID: 254023839}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -286,10 +286,47 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197678503}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 254023839}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 522, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &254023838
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254023839}
+  - component: {fileID: 254023840}
+  m_Layer: 5
+  m_Name: PoleTransition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &254023839
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254023838}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 197678504}
   m_Father: {fileID: 102874904}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -298,6 +335,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &254023840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254023838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d8382207b903f479e7d1f7031d75bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  polePrefab: {fileID: 2270463495236829698, guid: 4f7624d38a69c1940a9fc9e504207f9d, type: 3}
+  startingPos: {fileID: 197678504}
+  levelSelectorManager: {fileID: 1991161502}
+  canInstantiate: 1
 --- !u!1 &428621922
 GameObject:
   m_ObjectHideFlags: 0
@@ -913,8 +966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionCurve: 9
   transitionDuration: 0.3
-  polePrefab: {fileID: 5539240796160257265, guid: 4f7624d38a69c1940a9fc9e504207f9d, type: 3}
-  poleStartPos: {fileID: 197678504}
+  poleTransition: {fileID: 254023838}
   background: {fileID: 69545423}
   levelText: {fileID: 1359845771}
   texts:

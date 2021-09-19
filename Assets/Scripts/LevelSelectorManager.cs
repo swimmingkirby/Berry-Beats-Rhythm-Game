@@ -10,8 +10,7 @@ public class LevelSelectorManager : MonoBehaviour
     [SerializeField] float transitionDuration = 0.3f;
 
     [Header("Pole")]
-    [SerializeField] GameObject polePrefab;
-    [SerializeField] Transform poleStartPos;
+    [SerializeField] GameObject poleTransition;
 
     [Header("Fields")]
     [SerializeField] GameObject background;
@@ -43,16 +42,20 @@ public class LevelSelectorManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (poleTransition.GetComponent<PoleTransition>().canInstantiate)
         {
-            //levelIndex++;
-            ChangeMenu(1);
+             if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    //levelIndex++;
+                    ChangeMenu(1);
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    //levelIndex--;
+                    ChangeMenu(-1);
+                }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //levelIndex--;
-            ChangeMenu(-1);
-        }
+       
     }
 
     public void ChangeMenu(int input)
@@ -64,11 +67,12 @@ public class LevelSelectorManager : MonoBehaviour
             else
                 levelIndex--;
 
-            StartCoroutine(PoleCoroutine());
+            poleTransition.GetComponent<PoleTransition>().StartTransition();
 
             int _lastLevel = currentLevel;
             currentLevel = Mathf.RoundToInt(Mathf.Repeat(currentLevel + input, levelCount));
 
+            /*
             // Cancel all other animations to prevent glitches
             for (int i = 0; i < levelCount; i++)
             {
@@ -92,19 +96,16 @@ public class LevelSelectorManager : MonoBehaviour
                 .setEaseOutQuint()
                 .setOnComplete(() => LeanTween.moveLocalY(levelText.gameObject, levelTextPosition.y, transitionDuration - 0.1f)
                     .setEaseOutCirc());
-
-            print(levelIndex);
-            levelText.sprite = texts[levelIndex];
-            audioSource.clip = songs[levelIndex];
-            audioSource.Play();
+            */
         }
     }
 
-    private IEnumerator PoleCoroutine()
+    public void ChangeCurrentLevel()
     {
-        GameObject pole = Instantiate(polePrefab);
-        yield return new WaitForSeconds(2f);
-        Destroy(pole);
+        print(levelIndex);
+        levelText.sprite = texts[levelIndex];
+        audioSource.clip = songs[levelIndex];
+        audioSource.Play();
     }
 
 }

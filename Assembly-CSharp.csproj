@@ -72,6 +72,8 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTest.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
     <Compile Include="Assets\Scripts\Note.cs" />
+    <Compile Include="Assets\Scripts\Pole.cs" />
+    <Compile Include="Assets\Scripts\PoleTransition.cs" />
     <Compile Include="Assets\Scripts\Rework\Note.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\CustomUI.cs" />
