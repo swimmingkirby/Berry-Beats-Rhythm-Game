@@ -10,20 +10,25 @@ namespace BerryBeats.Composer
     public class ComposerHandler : MonoBehaviour
     {
         [Header("Component")]
-        [SerializeField] private GameObject arrowPrefab;
         [SerializeField] private Transform cameraHolder;
-        [SerializeField] private Transform noteHolder, noteHolder_R;
+        [SerializeField] private GameObject notePrefab, longnotePrefab;
+        [SerializeField] private Transform noteHolder, longNoteHolder, noteHolder_R, longNoteHolder_R;
         [SerializeField] private InputField fileName;
+        [SerializeField] private bool longnoteMode;
 
         //! Cache
         private RaycastHit2D hit;
+        private GameObject arrowPrefab;
         private Note selectedArrow;
         private int selectedIndex;
-        private List<Note> notes; // deprecated
+        private List<Note> notes, normalNotes, longNotes; // deprecated
+        private Transform currentHolder, currentHolder_R;
         BinaryFormatter formatter;
         private float scale;
+        private string NOTE_TAG;
 
-        private const string NOTE_TAG = "Note";
+        private const string NOTE_NORMAL_TAG = "Note";
+        private const string NOTE_LONG_TAG = "LongNote";
         private const string BG_TAG = "BG";
         private const string PATH = "Assets/Levels/";
         private string currentPath = "";
@@ -31,11 +36,17 @@ namespace BerryBeats.Composer
         private void Start()
         {
             formatter = new BinaryFormatter();
-            notes = new List<Note>();
-            scale = arrowPrefab.GetComponent<Note>().ScaleX();
+            normalNotes = new List<Note>();
+            longNotes = new List<Note>();
+            notes = normalNotes;
+            arrowPrefab = notePrefab;
+            NOTE_TAG = NOTE_NORMAL_TAG;
+            currentHolder = noteHolder;
+            currentHolder_R = noteHolder_R;
+            scale = notePrefab.GetComponent<Note>().ScaleX();
             cameraHolder.localScale = new Vector3(scale, 1, 1);
             cameraHolder.localPosition = new Vector3(scale / 2, 0, cameraHolder.localPosition.z);
-            noteHolder.localScale = noteHolder_R.localScale = new Vector3(scale, 1, 1);
+            noteHolder.localScale = longNoteHolder.localScale = noteHolder_R.localScale = longNoteHolder_R.localScale = new Vector3(scale, 1, 1);
         }
 
         #region Unity Methods
@@ -44,23 +55,23 @@ namespace BerryBeats.Composer
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 SpawnNote();
-            }
-            else if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
                 DragStart();
             }
-            else if (selectedArrow != null && Input.GetKey(KeyCode.Mouse1))
+            else if (selectedArrow != null && Input.GetKey(KeyCode.Mouse0))
             {
                 PerfromDrag();
             }
-            else if (Input.GetKeyUp(KeyCode.Mouse1))
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 DragEnd();
+            }else if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                RemoveNote();
             }
         }
         #endregion
 
-        #region Spawn_Move
+        #region Spawn_Move_Delete
         private void SpawnNote()
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
@@ -68,14 +79,14 @@ namespace BerryBeats.Composer
             if (!hit || !hit.collider.CompareTag(BG_TAG))
                 return;
 
-            Transform t = Instantiate(arrowPrefab, noteHolder).transform;
+            Transform t = Instantiate(arrowPrefab, currentHolder).transform;
             t.localScale = new Vector3(1f / scale, 1f / scale, 1);
             t.position = new Vector2(hit.point.x, hit.point.y);
             Note note = t.GetComponent<Note>();
             Reposition(note);
             notes.Add(note);
             if (hit.collider.transform.position.x > 2f)
-                t.SetParent(noteHolder_R);
+                t.SetParent(currentHolder_R);
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, scale * .4f);
             foreach (Collider2D c in colliders)
@@ -104,6 +115,8 @@ namespace BerryBeats.Composer
         {
             if (!selectedArrow)
                 return;
+            if (selectedArrow.transform.position.x > 2f)
+                selectedArrow.transform.SetParent(currentHolder_R);
             Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.transform.position, scale * .4f);
 
             foreach (Collider2D c in colliders)
@@ -128,6 +141,16 @@ namespace BerryBeats.Composer
             Vector2 tempPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             selectedArrow.transform.position = tempPos;
             Reposition(selectedArrow);
+        }
+
+        private void RemoveNote()
+        {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            if (!hit.collider || !hit.collider.CompareTag(NOTE_TAG))
+                return;
+            selectedArrow = hit.transform.GetComponent<Note>();
+            notes.Remove(selectedArrow);
+            Destroy(selectedArrow.gameObject);
         }
         #endregion
 
@@ -192,17 +215,31 @@ namespace BerryBeats.Composer
             {
                 Debug.LogError(e.Message);
             }
+        }
 
+        public void setLongNoteMode(bool val)
+        {
+            longNoteHolder.localPosition = Vector3.forward * 5;
+            noteHolder.localPosition = Vector3.forward * 5;
+            longNoteHolder_R.localPosition = Vector3.forward * 5;
+            noteHolder_R.localPosition = Vector3.forward * 5;
+            longnoteMode = val;
+            arrowPrefab = longnoteMode ? longnotePrefab : notePrefab;
+            notes = longnoteMode ? longNotes : normalNotes;
+            NOTE_TAG = longnoteMode ? NOTE_LONG_TAG : NOTE_NORMAL_TAG;
+            currentHolder = longnoteMode ? longNoteHolder : noteHolder;
+            currentHolder_R = longnoteMode ? longNoteHolder_R : noteHolder_R;
+            currentHolder.localPosition = currentHolder_R.localPosition = Vector3.zero;
         }
 
         private void performLoad(ArrayPosition[] _layout, bool right = false)
         {
-            var nh = right ? noteHolder_R : noteHolder;
-            foreach (Transform child in nh)
+            var nh = right ? currentHolder_R : currentHolder;
+            foreach (Note child in nh)
             {
                 Destroy(child.gameObject);
             }
-            notes = new List<Note>();
+            notes.Clear();
 
             if (right)
                 for (int i = 0; i < _layout.Length; ++i)

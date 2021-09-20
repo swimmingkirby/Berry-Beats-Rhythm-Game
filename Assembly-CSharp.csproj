@@ -77,10 +77,10 @@
     <Compile Include="Assets\Scripts\Rework\Note.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\Scripts\CustomUI.cs" />
+    <Compile Include="Assets\Scripts\Composer\ComposerHandler.cs" />
     <Compile Include="Assets\Scripts\LongNote.cs" />
     <Compile Include="Assets\Scripts\ButtonController.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
-    <Compile Include="Assets\Scripts\Composer\ComposerHandler.cs" />
     <Compile Include="Assets\Scripts\Animation\ArrowHighlighter.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Level.cs" />
