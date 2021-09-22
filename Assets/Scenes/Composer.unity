@@ -1080,7 +1080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588416676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
+  m_LocalPosition: {x: 0, y: 0, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 2006599320}
@@ -1300,7 +1300,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 853378088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 20}
+  m_LocalPosition: {x: 4, y: 0, z: 12}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 1117261116}
@@ -1899,7 +1899,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2133,18 +2133,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8810093973519747952, guid: a4912578b1d517c4da13c36c663bd691, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810093973519747952, guid: a4912578b1d517c4da13c36c663bd691, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810093973519747952, guid: a4912578b1d517c4da13c36c663bd691, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8810093973519747952, guid: a4912578b1d517c4da13c36c663bd691, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2230,12 +2218,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1663626857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27abcd316a96f0042b9b7833c3dbe1ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 80ff6ae45ceb257419ca3667cffe3b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraHolder: {fileID: 519420032}
-  notePrefab: {fileID: 3133536890820425372, guid: 01313177bd421d943ade424cfb50b134, type: 3}
-  longnotePrefab: {fileID: 8362051671489482886, guid: 3778b1119788cfe42958ccf158b2be6b, type: 3}
+  notePrefab: {fileID: 3133536890820425372, guid: 4979d332c58ba7b4bbb80879b23ccfb6, type: 3}
+  longnotePrefab: {fileID: 3133536890820425372, guid: 36777000d01ad5a4eade4fdd61c9d53c, type: 3}
   noteHolder: {fileID: 1757615511}
   longNoteHolder: {fileID: 1271366652}
   noteHolder_R: {fileID: 832172576}
