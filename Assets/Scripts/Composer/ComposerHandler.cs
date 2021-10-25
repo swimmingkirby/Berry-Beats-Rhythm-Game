@@ -21,7 +21,7 @@ namespace BerryBeats.Composer
         private GameObject arrowPrefab;
         private Note selectedArrow;
         private int selectedIndex;
-        private List<Note> notes, normalNotes, longNotes; // deprecated
+        private List<Note> notes, notes_R, normalNotes, longNotes, normalNotes_R, longNotes_R;
         private Transform currentHolder, currentHolder_R;
         BinaryFormatter formatter;
         private float scale;
@@ -37,8 +37,11 @@ namespace BerryBeats.Composer
         {
             formatter = new BinaryFormatter();
             normalNotes = new List<Note>();
+            normalNotes_R = new List<Note>();
             longNotes = new List<Note>();
+            longNotes_R = new List<Note>();
             notes = normalNotes;
+            notes_R = normalNotes_R;
             arrowPrefab = notePrefab;
             NOTE_TAG = NOTE_NORMAL_TAG;
             currentHolder = noteHolder;
@@ -79,34 +82,39 @@ namespace BerryBeats.Composer
             if (!hit || !hit.collider.CompareTag(BG_TAG))
                 return;
 
-            Transform t = Instantiate(arrowPrefab, currentHolder).transform;
-            t.localScale = new Vector3(1f / scale, 1f / scale, 1);
+            Transform t = Instantiate(arrowPrefab).transform;
+            t.localScale = new Vector3(1f, 1f / scale, 1);
             t.position = new Vector2(hit.point.x, hit.point.y);
             Note note = t.GetComponent<Note>();
+            bool _right = hit.collider.transform.position.x > 2f;
+            t.SetParent(_right? currentHolder_R: currentHolder);
             Reposition(note);
-            notes.Add(note);
-            if (hit.collider.transform.position.x > 2f)
-                t.SetParent(currentHolder_R);
+            if (_right) notes_R.Add(note); else  notes.Add(note);
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(t.position, scale * .4f);
             foreach (Collider2D c in colliders)
             {
                 if (c == this.GetComponent<Collider2D>() || !c.CompareTag(NOTE_TAG))
-                {
                     continue;
+                if (_right)
+                {
+                    if (notes_R.Contains(c.GetComponent<Note>()))
+                        notes_R.Remove(c.GetComponent<Note>());
                 }
                 else
                 {
-                    notes.Remove(c.GetComponent<Note>());
-                    Destroy(c.gameObject);
+                    if (notes.Contains(c.GetComponent<Note>()))
+                        notes.Remove(c.GetComponent<Note>());
                 }
+
+                Destroy(c.gameObject);
             }
         }
 
         void DragStart()
         {
             hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (!hit.collider || !hit.collider.CompareTag(NOTE_TAG))
+            if (!hit.collider || !hit.collider.CompareTag(NOTE_TAG))    
                 return;
             selectedArrow = hit.transform.GetComponent<Note>();
         }
@@ -115,29 +123,46 @@ namespace BerryBeats.Composer
         {
             if (!selectedArrow)
                 return;
-            if (selectedArrow.transform.position.x > 2f)
-                selectedArrow.transform.SetParent(currentHolder_R);
+            bool _right = selectedArrow.transform.position.x > 2f;
+            selectedArrow.transform.SetParent(_right?currentHolder_R: currentHolder);
+            //Select nearby arrows for deletion
             Collider2D[] colliders = Physics2D.OverlapCircleAll(selectedArrow.transform.position, scale * .4f);
 
             foreach (Collider2D c in colliders)
             {
                 if (c == selectedArrow.GetComponent<Collider2D>() || !c.CompareTag(NOTE_TAG))
-                {
                     continue;
+
+                if (_right)
+                {
+                    if (notes_R.Contains(c.GetComponent<Note>()))
+                        notes_R.Remove(c.GetComponent<Note>());
                 }
                 else
                 {
-                    notes.Remove(c.GetComponent<Note>());
-                    Destroy(c.gameObject);
+                    if (notes.Contains(c.GetComponent<Note>()))
+                        notes.Remove(c.GetComponent<Note>());
                 }
+
+                Destroy(c.gameObject);
             }
             selectedArrow.Reposition2();
-            notes.ToArray()[notes.IndexOf(selectedArrow)].transform.position = selectedArrow.transform.position;
+
+            //Removing the selected Note from both as the parent is unknown
+            if(notes.Contains(selectedArrow)) notes.Remove(selectedArrow);
+            if(notes_R.Contains(selectedArrow)) notes_R.Remove(selectedArrow);
+
+            if (_right)
+                notes_R.Add(selectedArrow);
+            else
+                notes.Add(selectedArrow);
+
             selectedArrow = null;
         }
 
         void PerfromDrag()
         {
+            //TODO: Limit Moving within own range
             Vector2 tempPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             selectedArrow.transform.position = tempPos;
             Reposition(selectedArrow);
@@ -149,7 +174,10 @@ namespace BerryBeats.Composer
             if (!hit.collider || !hit.collider.CompareTag(NOTE_TAG))
                 return;
             selectedArrow = hit.transform.GetComponent<Note>();
-            notes.Remove(selectedArrow);
+            if (notes.Contains(selectedArrow))
+                notes.Remove(selectedArrow);
+            else
+                notes_R.Remove(selectedArrow);
             Destroy(selectedArrow.gameObject);
         }
         #endregion
@@ -226,6 +254,7 @@ namespace BerryBeats.Composer
             longnoteMode = val;
             arrowPrefab = longnoteMode ? longnotePrefab : notePrefab;
             notes = longnoteMode ? longNotes : normalNotes;
+            notes_R = longnoteMode ? longNotes_R : normalNotes_R;
             NOTE_TAG = longnoteMode ? NOTE_LONG_TAG : NOTE_NORMAL_TAG;
             currentHolder = longnoteMode ? longNoteHolder : noteHolder;
             currentHolder_R = longnoteMode ? longNoteHolder_R : noteHolder_R;
@@ -235,14 +264,12 @@ namespace BerryBeats.Composer
         private void performLoad(ArrayPosition[] _layout, bool right = false)
         {
             var nh = right ? currentHolder_R : currentHolder;
+
             foreach (Note child in nh)
-            {
                 Destroy(child.gameObject);
-            }
-            notes.Clear();
 
             if (right)
-                for (int i = 0; i < _layout.Length; ++i)
+                for (int i = 0; i < _layout.Length; i++)
                     _layout[i].x += 4f;
 
             foreach (ArrayPosition pos in _layout)
@@ -251,7 +278,10 @@ namespace BerryBeats.Composer
                 note.transform.localPosition = new Vector3(pos.x, pos.y, 0);
                 note.transform.localScale = new Vector3(1 / scale, 1 / scale, 1);
                 note.Reposition2();
-                notes.Add(note);
+                if (right)
+                    notes_R.Add(note);
+                else
+                    notes.Add(note);
             }
         }
 
