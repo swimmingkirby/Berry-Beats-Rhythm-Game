@@ -2,4 +2,4 @@
 
 Welcome to Berry Beats!
 
-![](Game-Art/berrybeats.png)
+![Game Image](Game-Art/berrybeats.png)
